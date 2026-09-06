@@ -27,7 +27,7 @@ export function ProcessTimeline({ steps }: ProcessTimelineProps) {
                     className="relative flex items-start group py-12 sm:py-20"
                 >
                     <div className="flex-shrink-0 w-[80px] sm:w-[120px] bg-[#080B0A] relative z-10 py-1">
-                        <span className="font-sans font-medium text-4xl sm:text-5xl lg:text-7xl text-[#35D07F]/20 group-hover:text-[#35D07F] transition-colors duration-500">
+                        <span className="font-sans font-medium text-4xl sm:text-5xl lg:text-7xl text-[#10A882]/20 group-hover:text-[#10A882] transition-colors duration-500">
                             {step.number}
                         </span>
                     </div>

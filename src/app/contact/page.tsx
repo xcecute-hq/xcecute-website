@@ -11,7 +11,7 @@ export default function ContactPage() {
     return (
         <div className="flex flex-col w-full bg-[#080B0A] min-h-screen relative z-10">
             <section className="pt-40 pb-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#35D07F]/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#10A882]/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
 
                 <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 lg:gap-24">
 
@@ -33,7 +33,8 @@ export default function ContactPage() {
 
                             <div className="flex flex-col gap-1">
                                 <h4 className="font-sans font-semibold text-[#A7B0AB] text-[11px] uppercase tracking-wider mb-2">Direct</h4>
-                                <a href="mailto:hello@agency.com" className="font-sans text-lg text-[#F1F4F2] hover:text-[#35D07F] transition-colors">hello@agency.com</a>
+                                <a href="mailto:xcecute.hq@gmail.com" className="font-sans text-lg text-[#F1F4F2] hover:text-[#10A882] transition-colors">xcecute.hq@gmail.com</a>
+                                <a href="tel:+919551091144" className="font-sans text-lg text-[#F1F4F2] hover:text-[#10A882] transition-colors">9551091144 / 7204009267</a>
                             </div>
                         </ScrollReveal>
                     </div>
@@ -41,7 +42,7 @@ export default function ContactPage() {
                     {/* RIGHT FORM COLUMN */}
                     <div className="lg:w-1/2">
                         <ScrollReveal delay={0.1}>
-                            <div className="bg-[#111714] p-8 sm:p-12 rounded-3xl border border-[#B4FFD7]/10 hover:border-[#35D07F]/20 hover:shadow-[0_0_40px_rgba(53,208,127,0.04)] transition-all duration-500">
+                            <div className="bg-[#111714] p-8 sm:p-12 rounded-3xl border border-[#B4FFD7]/10 hover:border-[#10A882]/20 hover:shadow-[0_0_40px_rgba(53,208,127,0.04)] transition-all duration-500">
                                 <ContactForm />
                             </div>
                         </ScrollReveal>

@@ -25,7 +25,7 @@ export default function AboutPage() {
             <section className="pb-32 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-5xl mx-auto">
                     <ScrollReveal>
-                        <span className="font-sans text-[11px] font-medium uppercase tracking-[0.2em] text-[#707A75] mb-8 block">The Agency</span>
+                        <span className="font-sans text-[11px] font-medium uppercase tracking-[0.2em] text-[#707A75] mb-8 block">Xcecute</span>
                         <h1 className="font-sans font-medium text-5xl sm:text-7xl lg:text-[90px] leading-[1.05] tracking-tight text-[#F1F4F2] mb-16">
                             We're building<br />something of our own.
                         </h1>
@@ -37,7 +37,7 @@ export default function AboutPage() {
                                 We're engineers, designers, and builders who decided to stop waiting for the perfect idea and start building. We started this company because we enjoy solving difficult problems. Not just writing code, but understanding <span className="text-[#F1F4F2]">why something needs to exist, who it is for, and how it can actually make a difference.</span>
                             </p>
                             <p>
-                                We know what it feels like to start with an idea and not have everything figured out yet. That's why we don't believe in making things unnecessarily complicated. You bring us the problem, the idea, or even just a rough direction. <span className="text-[#35D07F]">We figure it out with you.</span>
+                                We know what it feels like to start with an idea and not have everything figured out yet. That's why we don't believe in making things unnecessarily complicated. You bring us the problem, the idea, or even just a rough direction. <span className="text-[#10A882]">We figure it out with you.</span>
                             </p>
                             <p>
                                 Sometimes that means building a product from scratch. Sometimes it's automating a process your team is tired of doing manually. Sometimes it's fixing something that has grown messy over time. Whatever the problem is, we want to understand it before we start building.
@@ -104,7 +104,7 @@ export default function AboutPage() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
                         {values.map((v, i) => (
                             <ScrollReveal key={v.num} delay={i * 0.05} className="group flex items-start gap-8">
-                                <span className="font-sans text-sm text-[#35D07F]/40 font-medium pt-1 shrink-0 group-hover:text-[#35D07F] transition-colors">{v.num}</span>
+                                <span className="font-sans text-sm text-[#10A882]/40 font-medium pt-1 shrink-0 group-hover:text-[#10A882] transition-colors">{v.num}</span>
                                 <div>
                                     <h4 className="font-sans font-medium text-2xl text-[#F1F4F2] mb-3 group-hover:drop-shadow-[0_0_8px_rgba(53,208,127,0.3)] transition-all">{v.title}</h4>
                                     <p className="font-sans text-[#A7B0AB] text-[15px] leading-relaxed">{v.description}</p>
@@ -117,7 +117,7 @@ export default function AboutPage() {
 
             {/* CTA */}
             <section className="py-32 px-4 sm:px-6 lg:px-8 border-t border-[#B4FFD7]/10 bg-[#0D1210] relative overflow-hidden">
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#35D07F]/5 rounded-full blur-[150px] pointer-events-none" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#10A882]/5 rounded-full blur-[150px] pointer-events-none" />
                 <div className="max-w-3xl mx-auto text-center relative z-10">
                     <ScrollReveal>
                         <h2 className="font-sans font-medium text-3xl sm:text-5xl text-[#F1F4F2] tracking-tight mb-8">
@@ -126,12 +126,12 @@ export default function AboutPage() {
                         <p className="font-sans text-xl text-[#A7B0AB] leading-relaxed mb-12">
                             We're not interested in being just another company you send a brief to. We'd rather understand what you're trying to do, figure things out together, and build something we're both proud to put our names behind.
                             <br /><br />
-                            <span className="text-[#F1F4F2]">If you have an idea, a problem, or something you've been putting off fixing — tell us about it.</span>
+                            <span className="text-[#F1F4F2]">If you have an idea, a problem, or something you've been putting off fixing – tell us about it.</span>
                         </p>
 
-                        <Link href="/contact" className="inline-flex items-center text-[15px] tracking-wide font-medium text-[#F1F4F2] bg-[#111714] border border-[#B4FFD7]/10 px-8 py-4 rounded-full group hover:bg-[#151D19] hover:border-[#35D07F]/25 hover:shadow-[0_0_30px_rgba(53,208,127,0.06)] transition-all duration-300">
+                        <Link href="/contact" className="inline-flex items-center text-[15px] tracking-wide font-medium text-[#F1F4F2] bg-[#111714] border border-[#B4FFD7]/10 px-8 py-4 rounded-full group hover:bg-[#151D19] hover:border-[#10A882]/25 hover:shadow-[0_0_30px_rgba(53,208,127,0.06)] transition-all duration-300">
                             Contact Us
-                            <ArrowRight className="w-4 h-4 ml-3 group-hover:translate-x-1 group-hover:text-[#35D07F] transition-all" />
+                            <ArrowRight className="w-4 h-4 ml-3 group-hover:translate-x-1 group-hover:text-[#10A882] transition-all" />
                         </Link>
                     </ScrollReveal>
                 </div>

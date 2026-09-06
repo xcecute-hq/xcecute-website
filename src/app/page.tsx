@@ -12,13 +12,13 @@ export const metadata: Metadata = {
 };
 
 const capabilitiesList = [
-  { num: "01", title: "Custom Software", desc: "Software built around the way your business actually works." },
-  { num: "02", title: "SaaS & Product Development", desc: "From an idea to a product people can use." },
-  { num: "03", title: "AI Solutions", desc: "Practical AI for real problems." },
-  { num: "04", title: "Workflow Automation", desc: "Less repetitive work. More time for meaningful work." },
-  { num: "05", title: "Data & Analytics", desc: "Turn scattered data into something useful." },
-  { num: "06", title: "Machine Learning", desc: "From data to models that solve specific problems." },
-  { num: "07", title: "CMS & Digital Platforms", desc: "Content systems that give your team control." },
+  { id: "custom-software", num: "01", title: "Custom Software", desc: "Software built around the way your business actually works." },
+  { id: "saas-development", num: "02", title: "SaaS & Product Development", desc: "From an idea to a product people can use." },
+  { id: "ai-solutions", num: "03", title: "AI Solutions", desc: "Practical AI for real problems." },
+  { id: "workflow-automation", num: "04", title: "Workflow Automation", desc: "Less repetitive work. More time for meaningful work." },
+  { id: "data-analytics", num: "05", title: "Data & Analytics", desc: "Turn scattered data into something useful." },
+  { id: "machine-learning", num: "06", title: "Machine Learning", desc: "From data to models that solve specific problems." },
+  { id: "cms-platforms", num: "07", title: "CMS & Digital Platforms", desc: "Content systems that give your team control." },
 ];
 
 const processSteps = [
@@ -41,7 +41,7 @@ export default function Home() {
             <ScrollReveal>
               <h2 className="font-sans font-medium text-4xl sm:text-5xl text-[#F1F4F2] mb-6 tracking-tight">What we build.</h2>
               <p className="font-sans text-lg text-[#A7B0AB] leading-relaxed">
-                We build digital products and systems around real business problems — from custom software and SaaS platforms to AI, automation, data, and machine learning.
+                We build digital products and systems around real business problems: from custom software and SaaS platforms to AI, automation, data, and machine learning.
               </p>
             </ScrollReveal>
           </div>
@@ -49,8 +49,8 @@ export default function Home() {
           <div className="lg:w-2/3 flex flex-col">
             {capabilitiesList.map((cap, i) => (
               <ScrollReveal key={cap.num} delay={0.1 * i} className="group relative border-b border-[#B4FFD7]/10 hover:bg-[#111714]/40 transition-colors duration-500 ease-out">
-                <Link href="/services" className="flex flex-col sm:flex-row sm:items-center py-10 px-4 sm:px-8 transform group-hover:translate-x-2 transition-transform duration-500 ease-out">
-                  <span className="font-sans text-[13px] text-[#35D07F] tracking-[0.2em] uppercase font-medium mb-4 sm:mb-0 sm:w-20 shrink-0 opacity-80 group-hover:opacity-100 transition-opacity">
+                <Link href={`/services#${cap.id}`} className="flex flex-col sm:flex-row sm:items-center py-10 px-4 sm:px-8 transform group-hover:translate-x-2 transition-transform duration-500 ease-out">
+                  <span className="font-sans text-[13px] text-[#10A882] tracking-[0.2em] uppercase font-medium mb-4 sm:mb-0 sm:w-20 shrink-0 opacity-80 group-hover:opacity-100 transition-opacity">
                     {cap.num}
                   </span>
                   <div className="flex-1">
@@ -58,7 +58,7 @@ export default function Home() {
                     <p className="font-sans text-[#A7B0AB] text-[15px] max-w-xl group-hover:text-[#F1F4F2] transition-colors">{cap.desc}</p>
                   </div>
                   <div className="mt-6 sm:mt-0 opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300">
-                    <ArrowRight className="w-5 h-5 text-[#35D07F]" />
+                    <ArrowRight className="w-5 h-5 text-[#10A882]" />
                   </div>
                 </Link>
               </ScrollReveal>
@@ -72,7 +72,7 @@ export default function Home() {
         <div className="max-w-5xl mx-auto flex flex-col items-start gap-12">
           <ScrollReveal>
             <div className="font-sans text-xl sm:text-2xl text-[#A7B0AB] leading-relaxed max-w-3xl mb-12">
-              <p className="mb-4">We don't believe every problem needs AI.</p>
+              <p className="mb-4">Using too much AI without clear thought or purpose is a mistake.</p>
               <p className="mb-4">We don't believe every business needs a custom platform.</p>
               <p>And we don't believe adding more technology automatically creates more value.</p>
             </div>
@@ -104,7 +104,7 @@ export default function Home() {
             <p className="font-sans text-lg text-[#A7B0AB]">Things we've built, explored, and learned from.</p>
           </ScrollReveal>
           <ScrollReveal delay={0.2}>
-            <Link href="/work" className="inline-flex items-center text-[#35D07F] font-sans font-medium hover:text-[#5EE6A0] transition-colors group">
+            <Link href="/work" className="inline-flex items-center text-[#10A882] font-sans font-medium hover:text-[#5EE6A0] transition-colors group">
               <span className="mr-2">View all work</span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </Link>
@@ -170,9 +170,9 @@ export default function Home() {
             </div>
 
             <div className="mt-16">
-              <Link href="/about" className="inline-flex items-center text-[15px] tracking-wide font-medium text-[#F1F4F2] bg-[#111714] border border-[#B4FFD7]/10 px-8 py-4 rounded-full group hover:bg-[#151D19] hover:border-[#35D07F]/25 hover:shadow-[0_0_30px_rgba(53,208,127,0.06)] transition-all duration-300">
+              <Link href="/about" className="inline-flex items-center text-[15px] tracking-wide font-medium text-[#F1F4F2] bg-[#111714] border border-[#B4FFD7]/10 px-8 py-4 rounded-full group hover:bg-[#151D19] hover:border-[#10A882]/25 hover:shadow-[0_0_30px_rgba(53,208,127,0.06)] transition-all duration-300">
                 More about us
-                <ArrowRight className="w-4 h-4 ml-3 group-hover:translate-x-1 group-hover:text-[#35D07F] transition-all" />
+                <ArrowRight className="w-4 h-4 ml-3 group-hover:translate-x-1 group-hover:text-[#10A882] transition-all" />
               </Link>
             </div>
           </ScrollReveal>

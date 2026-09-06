@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { useState } from "react";
+import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { CheckCircle2, Loader2, AlertCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -50,7 +51,7 @@ export function ContactForm() {
     if (isSuccess) {
         return (
             <div className="flex flex-col items-center justify-center p-12 text-center bg-[#0D1310] rounded-3xl border border-[#B4FFD7]/10 h-[600px] transition-all">
-                <CheckCircle2 className="w-16 h-16 text-[#35D07F] mb-6" />
+                <CheckCircle2 className="w-16 h-16 text-[#10A882] mb-6" />
                 <h3 className="font-sans font-medium text-3xl sm:text-4xl text-white mb-4">Request Received</h3>
                 <p className="font-sans text-[#A7B0AB] max-w-md mx-auto mb-8">
                     Thank you for reaching out. We will review your project details and get back to you within 24 hours to schedule a discovery call.
@@ -73,12 +74,12 @@ export function ContactForm() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                    <label htmlFor="name" className="text-sm font-sans font-medium text-white/80 ml-1">Name <span className="text-[#35D07F]">*</span></label>
+                    <label htmlFor="name" className="text-sm font-sans font-medium text-white/80 ml-1">Name <span className="text-[#10A882]">*</span></label>
                     <input
                         {...register("name")}
                         id="name"
                         className={cn(
-                            "w-full bg-[#0D1310] border rounded-xl px-4 py-3 text-[#F1F4F2] font-sans placeholder:text-[#A7B0AB]/50 focus:outline-none focus:ring-1 focus:ring-[#35D07F] focus:border-[#35D07F] transition-colors",
+                            "w-full bg-[#0D1310] border rounded-xl px-4 py-3 text-[#F1F4F2] font-sans placeholder:text-[#A7B0AB]/50 focus:outline-none focus:ring-1 focus:ring-[#10A882] focus:border-[#10A882] transition-colors",
                             errors.name ? "border-red-500/50" : "border-[#B4FFD7]/10"
                         )}
                         placeholder="Jane Doe"
@@ -93,7 +94,7 @@ export function ContactForm() {
                         id="email"
                         type="email"
                         className={cn(
-                            "w-full bg-[#0D1310] border rounded-xl px-4 py-3 text-[#F1F4F2] font-sans placeholder:text-[#A7B0AB]/50 focus:outline-none focus:ring-1 focus:ring-[#35D07F] focus:border-[#35D07F] transition-colors",
+                            "w-full bg-[#0D1310] border rounded-xl px-4 py-3 text-[#F1F4F2] font-sans placeholder:text-[#A7B0AB]/50 focus:outline-none focus:ring-1 focus:ring-[#10A882] focus:border-[#10A882] transition-colors",
                             errors.email ? "border-red-500/50" : "border-[#B4FFD7]/10"
                         )}
                         placeholder="jane@company.com"
@@ -108,7 +109,7 @@ export function ContactForm() {
                     <input
                         {...register("company")}
                         id="company"
-                        className="w-full bg-[#0D1310] border border-[#B4FFD7]/10 rounded-xl px-4 py-3 text-[#F1F4F2] font-sans placeholder:text-[#A7B0AB]/50 focus:outline-none focus:ring-1 focus:ring-[#35D07F] focus:border-[#35D07F] transition-colors"
+                        className="w-full bg-[#0D1310] border border-[#B4FFD7]/10 rounded-xl px-4 py-3 text-[#F1F4F2] font-sans placeholder:text-[#A7B0AB]/50 focus:outline-none focus:ring-1 focus:ring-[#10A882] focus:border-[#10A882] transition-colors"
                         placeholder="Company Ltd"
                     />
                 </div>
@@ -119,7 +120,7 @@ export function ContactForm() {
                         {...register("projectType")}
                         id="projectType"
                         className={cn(
-                            "w-full bg-[#0D1310] border rounded-xl px-4 py-3 text-[#F1F4F2] font-sans focus:outline-none focus:ring-1 focus:ring-[#35D07F] focus:border-[#35D07F] transition-colors appearance-none",
+                            "w-full bg-[#0D1310] border rounded-xl px-4 py-3 text-[#F1F4F2] font-sans focus:outline-none focus:ring-1 focus:ring-[#10A882] focus:border-[#10A882] transition-colors appearance-none",
                             errors.projectType ? "border-red-500/50" : "border-[#B4FFD7]/10"
                         )}
                     >
@@ -141,14 +142,14 @@ export function ContactForm() {
                         {...register("budget")}
                         id="budget"
                         className={cn(
-                            "w-full bg-[#0D1310] border rounded-xl px-4 py-3 text-[#F1F4F2] font-sans focus:outline-none focus:ring-1 focus:ring-[#35D07F] focus:border-[#35D07F] transition-colors appearance-none",
+                            "w-full bg-[#0D1310] border rounded-xl px-4 py-3 text-[#F1F4F2] font-sans focus:outline-none focus:ring-1 focus:ring-[#10A882] focus:border-[#10A882] transition-colors appearance-none",
                             errors.budget ? "border-red-500/50" : "border-[#B4FFD7]/10"
                         )}
                     >
                         <option value="" disabled selected>Select an option</option>
-                        <option value="10k-25k">$10k - $25k</option>
-                        <option value="25k-50k">$25k - $50k</option>
-                        <option value="50k-100k">$50k - $100k</option>
+                        <option value="10k-25k">$10k to $25k</option>
+                        <option value="25k-50k">$25k to $50k</option>
+                        <option value="50k-100k">$50k to $100k</option>
                         <option value="100k+">$100k+</option>
                     </select>
                     {errors.budget && <p className="text-red-500 text-xs mt-1 ml-1">{errors.budget.message}</p>}
@@ -159,7 +160,7 @@ export function ContactForm() {
                     <select
                         {...register("timeline")}
                         id="timeline"
-                        className="w-full bg-[#0D1310] border border-[#B4FFD7]/10 rounded-xl px-4 py-3 text-[#F1F4F2] font-sans focus:outline-none focus:ring-1 focus:ring-[#35D07F] focus:border-[#35D07F] transition-colors appearance-none"
+                        className="w-full bg-[#0D1310] border border-[#B4FFD7]/10 rounded-xl px-4 py-3 text-[#F1F4F2] font-sans focus:outline-none focus:ring-1 focus:ring-[#10A882] focus:border-[#10A882] transition-colors appearance-none"
                     >
                         <option value="" disabled selected>Select an option</option>
                         <option value="asap">ASAP</option>
@@ -177,7 +178,7 @@ export function ContactForm() {
                     id="message"
                     rows={5}
                     className={cn(
-                        "w-full bg-[#0D1310] border rounded-xl px-4 py-3 text-[#F1F4F2] font-sans placeholder:text-[#A7B0AB]/50 focus:outline-none focus:ring-1 focus:ring-[#35D07F] focus:border-[#35D07F] transition-colors resize-none",
+                        "w-full bg-[#0D1310] border rounded-xl px-4 py-3 text-[#F1F4F2] font-sans placeholder:text-[#A7B0AB]/50 focus:outline-none focus:ring-1 focus:ring-[#10A882] focus:border-[#10A882] transition-colors resize-none",
                         errors.message ? "border-red-500/50" : "border-[#B4FFD7]/10"
                     )}
                     placeholder="Tell us about your project, goals, and any specific requirements..."
@@ -196,8 +197,8 @@ export function ContactForm() {
                 )}
             </Button>
 
-            <p className="text-center text-[#A7B0AB]/60 text-xs mt-4">
-                We respect your privacy. All information is kept strictly confidential.
+            <p className="text-center text-[#A7B0AB]/60 text-[11px] leading-relaxed mt-4">
+                By submitting this form, you acknowledge our <Link href="/privacy" className="text-[#A7B0AB] hover:text-[#10A882] underline underline-offset-2 transition-colors">Privacy Policy</Link> and agree that we may use the information provided to respond to your inquiry.
             </p>
         </form>
     );

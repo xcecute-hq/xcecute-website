@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 @theme {
-  --color-base: #080B0A;
-  --color-surface: #111714;
-  --color-surface-hover: #151D19;
-  --color-cream: #F1F4F2;
-  --color-muted: #707A75;
-  --color-border-subtle: rgba(180, 255, 215, 0.10);
-  --color-accent-primary: #35D07F;
-  --color-accent-secondary: #0D1210;
-  --color-accent-success: #5EE6A0;
+  --color-base: var(--theme-base);
+  --color-surface: var(--theme-surface);
+  --color-surface-hover: var(--theme-surface-hover);
+  --color-cream: var(--theme-cream);
+  --color-muted: var(--theme-muted);
+  --color-border-subtle: var(--theme-border-subtle);
+  --color-accent-primary: var(--theme-accent-primary);
+  --color-accent-secondary: var(--theme-accent-secondary);
+  --color-accent-success: var(--theme-accent-success);
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
@@ -17,12 +17,20 @@
 
 @layer base {
   :root {
-    --background: var(--color-base);
-    --foreground: var(--color-cream);
-  }
-}
+    --theme-base: #080B0A;
+    --theme-surface: #111714;
+    --theme-surface-hover: #151D19;
+    --theme-cream: #F1F4F2;
+    --theme-muted: #707A75;
+    --theme-border-subtle: rgba(180, 255, 215, 0.10);
+    --theme-accent-primary: #10A882;
+    --theme-accent-secondary: #0D1210;
+    --theme-accent-success: #5EE6A0;
 
-@layer base {
+    --background: var(--theme-base);
+    --foreground: var(--theme-cream);
+  }
+
   body {
     @apply bg-base text-cream m-0 p-0 overflow-x-hidden;
     font-family: var(--font-sans);
@@ -81,5 +89,11 @@
     -webkit-backdrop-filter: blur(16px) saturate(180%);
     border-radius: 9999px;
     box-shadow: none !important;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  * {
+    cursor: none !important;
   }
 }

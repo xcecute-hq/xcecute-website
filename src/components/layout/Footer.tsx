@@ -18,6 +18,12 @@ const FOOTER_LINKS = {
         { name: "LinkedIn", href: "#" },
         { name: "GitHub", href: "#" },
     ],
+    legal: [
+        { name: "Privacy Policy", href: "/privacy" },
+        { name: "Terms & Conditions", href: "/terms" },
+        { name: "Cookie Policy", href: "/cookies" },
+        { name: "Disclaimer", href: "/disclaimer" },
+    ]
 };
 
 export function Footer() {
@@ -26,27 +32,25 @@ export function Footer() {
     return (
         <footer className="border-t border-border-subtle bg-base pt-20 pb-10 px-4 sm:px-6 lg:px-8 mt-20">
             <div className="max-w-7xl mx-auto flex flex-col gap-16">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-12 lg:gap-8">
                     <div className="lg:col-span-2 flex flex-col gap-6">
                         <Link
                             href="/"
                             className="flex items-center gap-3 w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary rounded-md"
                         >
-                            <div className="w-10 h-10 bg-accent-primary rounded-md flex items-center justify-center">
-                                <span className="font-display font-bold text-lg text-black leading-none mt-1">
-                                    A
-                                </span>
-                            </div>
-                            <span className="font-sans font-semibold tracking-wide text-xl text-cream">
-                                AGENCY
-                            </span>
+                            <img src="/Logo_with_name-removebg-preview.svg" alt="XCECUTE Logo" className="h-14 md:h-16 w-auto object-contain" />
                         </Link>
                         <p className="text-muted text-base max-w-sm leading-relaxed">
                             We turn complex ideas into digital products people use. Engineered for scale, designed for impact.
                         </p>
-                        <Button asChild variant="secondary" className="w-fit mt-2">
-                            <Link href="mailto:hello@agency.com">hello@agency.com</Link>
-                        </Button>
+                        <div className="flex flex-col gap-2 mt-2">
+                            <Button asChild variant="secondary" className="w-fit">
+                                <Link href="mailto:xcecute.hq@gmail.com">xcecute.hq@gmail.com</Link>
+                            </Button>
+                            <Button asChild variant="secondary" className="w-fit">
+                                <Link href="tel:+919551091144">9551091144 / 7204009267</Link>
+                            </Button>
+                        </div>
                     </div>
 
                     <div>
@@ -96,24 +100,26 @@ export function Footer() {
                             ))}
                         </ul>
                     </div>
+
+                    <div>
+                        <h3 className="font-sans font-semibold text-cream mb-6">Legal</h3>
+                        <ul className="flex flex-col gap-4">
+                            {FOOTER_LINKS.legal.map((link) => (
+                                <li key={link.name}>
+                                    <Link
+                                        href={link.href}
+                                        className="text-muted hover:text-accent-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary rounded-sm"
+                                    >
+                                        {link.name}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                 </div>
 
                 <div className="pt-8 border-t border-border-subtle flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted">
-                    <p>© {year} Agency. All rights reserved.</p>
-                    <div className="flex items-center gap-6">
-                        <Link
-                            href="/privacy"
-                            className="hover:text-cream transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary rounded-sm"
-                        >
-                            Privacy Policy
-                        </Link>
-                        <Link
-                            href="/terms"
-                            className="hover:text-cream transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary rounded-sm"
-                        >
-                            Terms of Service
-                        </Link>
-                    </div>
+                    <p>© {year} Xcecute. All rights reserved.</p>
                 </div>
             </div>
         </footer>

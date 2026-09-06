@@ -6,6 +6,8 @@ import { SiteBackground } from "@/components/layout/SiteBackground";
 import { FloatingNavbar } from "@/components/layout/FloatingNavbar";
 import { Footer } from "@/components/layout/Footer";
 import { CustomCursor } from "@/components/ui/CustomCursor";
+import { ThemeProvider } from "@/components/theme-provider";
+import { LoadingScreen } from "@/components/ui/LoadingScreen";
 
 const inter = Inter({
   weight: ["400", "500", "600"],
@@ -26,17 +28,21 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} antialiased dark`}
+      className={`${inter.variable} antialiased`}
+      suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col bg-base text-cream selection:bg-accent-primary/30 font-sans cursor-default md:cursor-none overscroll-none">
+        <LoadingScreen />
         <CustomCursor />
-        <SmoothScroll>
-          <SiteBackground>
-            <FloatingNavbar />
-            <main className="flex-grow">{children}</main>
-            <Footer />
-          </SiteBackground>
-        </SmoothScroll>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <SmoothScroll>
+            <SiteBackground>
+              <FloatingNavbar />
+              <main className="flex-grow">{children}</main>
+              <Footer />
+            </SiteBackground>
+          </SmoothScroll>
+        </ThemeProvider>
       </body>
     </html>
   );

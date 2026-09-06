@@ -10,6 +10,8 @@ import { Button } from "@/components/ui/Button";
 
 const NAV_LINKS = [
     { name: "Services", href: "/services" },
+    { name: "Work", href: "/work" },
+    { name: "Products", href: "#", comingSoon: true },
     { name: "Process", href: "/process" },
     { name: "About", href: "/about" },
 ];
@@ -54,51 +56,59 @@ export function SiteHeader() {
                     href="/"
                     className="flex items-center gap-2 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary rounded-md"
                 >
-                    {/* Custom logo shape or text */}
-                    <div className="w-8 h-8 md:w-10 md:h-10 bg-accent-primary rounded-md flex items-center justify-center transform transition-transform group-hover:scale-105 group-hover:rotate-3">
-                        <span className="font-display font-bold text-base text-lg text-black leading-none mt-1">A</span>
-                    </div>
-                    <span className="font-sans font-semibold tracking-wide text-lg hidden sm:block transition-colors group-hover:text-cream">
-                        AGENCY
+                    <img src="/Logo%20without%20name.svg" alt="XCECUTE Logo" className="h-7 sm:h-9 w-auto object-contain transform transition-transform group-hover:scale-105" />
+                    <span className="font-sans font-semibold tracking-widest text-lg hidden sm:block transition-colors group-hover:text-cream">
+                        XCECUTE
                     </span>
                 </Link>
 
                 {/* Desktop Nav */}
                 <nav className="hidden md:flex items-center gap-8">
                     {NAV_LINKS.map((link) => (
-                        <Link
-                            key={link.name}
-                            href={link.href}
-                            className="text-sm font-medium text-muted hover:text-cream transition-colors relative group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary rounded-sm"
-                        >
-                            {link.name}
-                            {pathname === link.href && (
-                                <motion.div
-                                    layoutId="activeNav"
-                                    className="absolute -bottom-1 left-0 right-0 h-[2px] bg-accent-primary rounded-full"
-                                    initial={false}
-                                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                                />
-                            )}
-                        </Link>
+                        link.comingSoon ? (
+                            <span
+                                key={link.name}
+                                className="text-sm font-medium text-muted hover:text-cream transition-colors relative group flex items-center gap-1.5 cursor-default"
+                            >
+                                {link.name}
+                                <span className="px-1.5 py-0.5 rounded text-[8px] font-bold tracking-widest bg-[#E6C65C]/10 text-[#E6C65C] border border-[#E6C65C]/20 uppercase">
+                                    Coming Soon
+                                </span>
+                            </span>
+                        ) : (
+                            <Link
+                                key={link.name}
+                                href={link.href}
+                                className={cn(
+                                    "px-4 py-1.5 rounded-full text-sm transition-all duration-300 relative group",
+                                    pathname === link.href
+                                        ? "bg-[#10A882] text-black font-semibold shadow-[0_0_15px_rgba(16,168,130,0.4)]"
+                                        : "font-medium text-muted hover:text-cream hover:bg-white/5"
+                                )}
+                            >
+                                {link.name}
+                            </Link>
+                        )
                     ))}
                 </nav>
 
                 <div className="hidden md:flex items-center gap-4">
                     <Button variant="ghost" size="sm" asChild>
-                        <Link href="/contact">Contact</Link>
+                        <Link href="/contact">Contact Us</Link>
                     </Button>
                 </div>
 
-                {/* Mobile menu toggle */}
-                <button
-                    className="md:hidden p-2 text-muted hover:text-cream transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary rounded-full relative z-50"
-                    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                    aria-expanded={mobileMenuOpen}
-                    aria-label="Toggle menu"
-                >
-                    {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-                </button>
+                {/* Mobile menu and Top Panel Actions */}
+                <div className="flex md:hidden items-center gap-3">
+                    <button
+                        className="p-2 text-muted hover:text-cream transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary rounded-full relative z-50"
+                        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                        aria-expanded={mobileMenuOpen}
+                        aria-label="Toggle menu"
+                    >
+                        {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                    </button>
+                </div>
             </div>
 
             {/* Mobile Menu Overlay */}
@@ -112,16 +122,28 @@ export function SiteHeader() {
                     <div className="flex flex-col items-center justify-center min-h-screen p-8 gap-8">
                         <nav className="flex flex-col items-center gap-6 text-center">
                             {NAV_LINKS.map((link) => (
-                                <Link
-                                    key={link.name}
-                                    href={link.href}
-                                    className={cn(
-                                        "font-display text-4xl sm:text-5xl transition-colors",
-                                        pathname === link.href ? "text-accent-primary" : "text-cream hover:text-muted"
-                                    )}
-                                >
-                                    {link.name}
-                                </Link>
+                                link.comingSoon ? (
+                                    <span
+                                        key={link.name}
+                                        className="font-display text-4xl sm:text-5xl text-cream/50 cursor-default flex items-center gap-3 relative"
+                                    >
+                                        {link.name}
+                                        <span className="px-2 py-1 rounded text-xs font-sans font-bold tracking-widest bg-[#E6C65C]/10 text-[#E6C65C] border border-[#E6C65C]/20 uppercase absolute -right-4 translate-x-full">
+                                            Coming Soon
+                                        </span>
+                                    </span>
+                                ) : (
+                                    <Link
+                                        key={link.name}
+                                        href={link.href}
+                                        className={cn(
+                                            "font-display text-4xl sm:text-5xl transition-colors",
+                                            pathname === link.href ? "text-accent-primary" : "text-cream hover:text-muted"
+                                        )}
+                                    >
+                                        {link.name}
+                                    </Link>
+                                )
                             ))}
                             <Link
                                 href="/contact"
@@ -130,7 +152,7 @@ export function SiteHeader() {
                                     pathname === "/contact" ? "text-accent-primary" : "text-cream hover:text-muted"
                                 )}
                             >
-                                Contact
+                                Contact Us
                             </Link>
                         </nav>
                     </div>
