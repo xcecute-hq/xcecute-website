@@ -1,205 +1,163 @@
 "use client";
 
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { useState } from "react";
-import Link from "next/link";
-import { Button } from "@/components/ui/Button";
-import { CheckCircle2, Loader2, AlertCircle } from "lucide-react";
+import { ArrowRight, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const formSchema = z.object({
-    name: z.string().min(2, "Name must be at least 2 characters"),
+const contactSchema = z.object({
+    name: z.string().min(2, "Name is required"),
     email: z.string().email("Please enter a valid email address"),
-    company: z.string().optional(),
-    projectType: z.string().min(1, "Please select a project type"),
-    budget: z.string().min(1, "Please select a budget range"),
-    timeline: z.string().optional(),
-    message: z.string().min(10, "Please briefly describe your project"),
+    source: z.string().min(1, "Please select an option").refine(val => val !== "default", {
+        message: "Please select an option"
+    }),
+    message: z.string().min(10, "Message must be at least 10 characters"),
 });
 
-type FormData = z.infer<typeof formSchema>;
+type ContactFormValues = z.infer<typeof contactSchema>;
 
 export function ContactForm() {
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [isSuccess, setIsSuccess] = useState(false);
-    const [error, setError] = useState<string | null>(null);
+    const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
     const {
         register,
         handleSubmit,
         formState: { errors },
-        reset,
-    } = useForm<FormData>({
-        resolver: zodResolver(formSchema),
+    } = useForm<ContactFormValues>({
+        resolver: zodResolver(contactSchema),
+        defaultValues: {
+            name: "",
+            email: "",
+            source: "default",
+            message: "",
+        },
     });
 
-    const onSubmit = async (data: FormData) => {
-        setIsSubmitting(true);
-        setError(null);
+    const onSubmit = async (data: ContactFormValues) => {
+        setStatus("loading");
+        try {
+            const res = await fetch("/api/contact", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data),
+            });
 
-        // Simulate server action/API delay
-        await new Promise((resolve) => setTimeout(resolve, 1500));
+            if (!res.ok) throw new Error("Failed to send message");
+            setStatus("success");
 
-        // For now, let's pretend it always succeeds
-        setIsSuccess(true);
-        setIsSubmitting(false);
-        reset();
+        } catch (error) {
+            console.error(error);
+            setStatus("error");
+        }
     };
 
-    if (isSuccess) {
+    if (status === "success") {
         return (
-            <div className="flex flex-col items-center justify-center p-12 text-center bg-[#0D1310] rounded-3xl border border-[#B4FFD7]/10 h-[600px] transition-all">
-                <CheckCircle2 className="w-16 h-16 text-[#10A882] mb-6" />
-                <h3 className="font-sans font-medium text-3xl sm:text-4xl text-white mb-4">Request Received</h3>
-                <p className="font-sans text-[#A7B0AB] max-w-md mx-auto mb-8">
-                    Thank you for reaching out. We will review your project details and get back to you within 24 hours to schedule a discovery call.
-                </p>
-                <Button variant="outline" onClick={() => setIsSuccess(false)}>
-                    Submit another request
-                </Button>
+            <div className="flex flex-col items-center justify-center h-full py-12 text-center animate-in fade-in zoom-in duration-500">
+                <div className="w-16 h-16 bg-[#10A882]/20 rounded-full flex items-center justify-center mb-6 border border-[#10A882]/40">
+                    <svg className="w-8 h-8 text-[#10A882]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                </div>
+                <h3 className="font-sans text-2xl font-medium text-[#F1F4F2] mb-3">Thanks — we've received your message.</h3>
+                <p className="text-[#A7B0AB]">We will get back to you shortly.</p>
             </div>
         );
     }
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-            {error && (
-                <div className="flex items-center gap-3 p-4 bg-red-900/10 border border-red-500/20 rounded-xl text-red-500 text-sm font-medium">
-                    <AlertCircle className="w-5 h-5 flex-shrink-0" />
-                    {error}
+
+            {/* NAME FIELD */}
+            <div className="space-y-2">
+                <label className="text-sm font-medium text-[#F1F4F2]">Full Name</label>
+                <input
+                    {...register("name")}
+                    type="text"
+                    placeholder="Your Name"
+                    className="w-full bg-[#080B0A]/50 border border-[#B4FFD7]/10 rounded-xl px-4 py-3.5 text-[#F1F4F2] placeholder:text-[#A7B0AB]/50 focus:outline-none focus:border-[#10A882] focus:ring-1 focus:ring-[#10A882] transition-all"
+                />
+                {errors.name && <p className="text-xs text-red-400">{errors.name.message}</p>}
+            </div>
+
+            {/* EMAIL FIELD */}
+            <div className="space-y-2">
+                <label className="text-sm font-medium text-[#F1F4F2]">Email</label>
+                <input
+                    {...register("email")}
+                    type="email"
+                    placeholder="yourname@email.com"
+                    className="w-full bg-[#080B0A]/50 border border-[#B4FFD7]/10 rounded-xl px-4 py-3.5 text-[#F1F4F2] placeholder:text-[#A7B0AB]/50 focus:outline-none focus:border-[#10A882] focus:ring-1 focus:ring-[#10A882] transition-all"
+                />
+                {errors.email && <p className="text-xs text-red-400">{errors.email.message}</p>}
+            </div>
+
+            {/* SOURCE FIELD */}
+            <div className="space-y-2">
+                <label className="text-sm font-medium text-[#F1F4F2]">How did you hear about us?</label>
+                <div className="relative">
+                    <select
+                        {...register("source")}
+                        className="w-full bg-[#080B0A]/50 border border-[#B4FFD7]/10 rounded-xl px-4 py-3.5 text-[#F1F4F2] focus:outline-none focus:border-[#10A882] focus:ring-1 focus:ring-[#10A882] transition-all appearance-none cursor-pointer"
+                    >
+                        <option value="default" className="text-gray-500 bg-[#111714]">How did you hear about us?</option>
+                        <option value="Google Search" className="bg-[#111714]">Google Search</option>
+                        <option value="Instagram" className="bg-[#111714]">Instagram</option>
+                        <option value="LinkedIn" className="bg-[#111714]">LinkedIn</option>
+                        <option value="YouTube" className="bg-[#111714]">YouTube</option>
+                        <option value="Friend / Referral" className="bg-[#111714]">Friend / Referral</option>
+                        <option value="Event / Conference" className="bg-[#111714]">Event / Conference</option>
+                        <option value="School / College" className="bg-[#111714]">School / College</option>
+                        <option value="Other" className="bg-[#111714]">Other</option>
+                    </select>
+                    <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none">
+                        <svg className="w-4 h-4 text-[#A7B0AB]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </div>
+                </div>
+                {errors.source && <p className="text-xs text-red-400">{errors.source.message}</p>}
+            </div>
+
+            {/* MESSAGE FIELD */}
+            <div className="space-y-2">
+                <label className="text-sm font-medium text-[#F1F4F2]">Message</label>
+                <textarea
+                    {...register("message")}
+                    placeholder="Tell us a little about what you're looking for..."
+                    rows={4}
+                    className="w-full bg-[#080B0A]/50 border border-[#B4FFD7]/10 rounded-xl px-4 py-3.5 text-[#F1F4F2] placeholder:text-[#A7B0AB]/50 focus:outline-none focus:border-[#10A882] focus:ring-1 focus:ring-[#10A882] transition-all resize-none"
+                />
+                {errors.message && <p className="text-xs text-red-400">{errors.message.message}</p>}
+            </div>
+
+            {status === "error" && (
+                <div className="p-3 bg-red-500/10 border border-red-500/20 rounded-xl text-red-400 text-sm text-center">
+                    Something went wrong. Please try again.
                 </div>
             )}
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                    <label htmlFor="name" className="text-sm font-sans font-medium text-white/80 ml-1">Name <span className="text-[#10A882]">*</span></label>
-                    <input
-                        {...register("name")}
-                        id="name"
-                        className={cn(
-                            "w-full bg-[#0D1310] border rounded-xl px-4 py-3 text-[#F1F4F2] font-sans placeholder:text-[#A7B0AB]/50 focus:outline-none focus:ring-1 focus:ring-[#10A882] focus:border-[#10A882] transition-colors",
-                            errors.name ? "border-red-500/50" : "border-[#B4FFD7]/10"
-                        )}
-                        placeholder="Jane Doe"
-                    />
-                    {errors.name && <p className="text-red-500 text-xs mt-1 ml-1">{errors.name.message}</p>}
-                </div>
-
-                <div className="space-y-2">
-                    <label htmlFor="email" className="text-sm font-sans font-medium text-cream ml-1">Work Email <span className="text-red-500">*</span></label>
-                    <input
-                        {...register("email")}
-                        id="email"
-                        type="email"
-                        className={cn(
-                            "w-full bg-[#0D1310] border rounded-xl px-4 py-3 text-[#F1F4F2] font-sans placeholder:text-[#A7B0AB]/50 focus:outline-none focus:ring-1 focus:ring-[#10A882] focus:border-[#10A882] transition-colors",
-                            errors.email ? "border-red-500/50" : "border-[#B4FFD7]/10"
-                        )}
-                        placeholder="jane@company.com"
-                    />
-                    {errors.email && <p className="text-red-500 text-xs mt-1 ml-1">{errors.email.message}</p>}
-                </div>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                    <label htmlFor="company" className="text-sm font-sans font-medium text-white/80 ml-1">Company</label>
-                    <input
-                        {...register("company")}
-                        id="company"
-                        className="w-full bg-[#0D1310] border border-[#B4FFD7]/10 rounded-xl px-4 py-3 text-[#F1F4F2] font-sans placeholder:text-[#A7B0AB]/50 focus:outline-none focus:ring-1 focus:ring-[#10A882] focus:border-[#10A882] transition-colors"
-                        placeholder="Company Ltd"
-                    />
-                </div>
-
-                <div className="space-y-2">
-                    <label htmlFor="projectType" className="text-sm font-sans font-medium text-cream ml-1">Project Type <span className="text-red-500">*</span></label>
-                    <select
-                        {...register("projectType")}
-                        id="projectType"
-                        className={cn(
-                            "w-full bg-[#0D1310] border rounded-xl px-4 py-3 text-[#F1F4F2] font-sans focus:outline-none focus:ring-1 focus:ring-[#10A882] focus:border-[#10A882] transition-colors appearance-none",
-                            errors.projectType ? "border-red-500/50" : "border-[#B4FFD7]/10"
-                        )}
-                    >
-                        <option value="" disabled selected>Select an option</option>
-                        <option value="custom_software">Custom Software / Dashboard</option>
-                        <option value="ai_agent">AI Agent / Automation</option>
-                        <option value="mobile_app">Mobile App</option>
-                        <option value="ecommerce">E-commerce / Web App</option>
-                        <option value="other">Other</option>
-                    </select>
-                    {errors.projectType && <p className="text-red-500 text-xs mt-1 ml-1">{errors.projectType.message}</p>}
-                </div>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                    <label htmlFor="budget" className="text-sm font-sans font-medium text-cream ml-1">Estimated Budget <span className="text-red-500">*</span></label>
-                    <select
-                        {...register("budget")}
-                        id="budget"
-                        className={cn(
-                            "w-full bg-[#0D1310] border rounded-xl px-4 py-3 text-[#F1F4F2] font-sans focus:outline-none focus:ring-1 focus:ring-[#10A882] focus:border-[#10A882] transition-colors appearance-none",
-                            errors.budget ? "border-red-500/50" : "border-[#B4FFD7]/10"
-                        )}
-                    >
-                        <option value="" disabled selected>Select an option</option>
-                        <option value="10k-25k">$10k to $25k</option>
-                        <option value="25k-50k">$25k to $50k</option>
-                        <option value="50k-100k">$50k to $100k</option>
-                        <option value="100k+">$100k+</option>
-                    </select>
-                    {errors.budget && <p className="text-red-500 text-xs mt-1 ml-1">{errors.budget.message}</p>}
-                </div>
-
-                <div className="space-y-2">
-                    <label htmlFor="timeline" className="text-sm font-sans font-medium text-white/80 ml-1">Timeline</label>
-                    <select
-                        {...register("timeline")}
-                        id="timeline"
-                        className="w-full bg-[#0D1310] border border-[#B4FFD7]/10 rounded-xl px-4 py-3 text-[#F1F4F2] font-sans focus:outline-none focus:ring-1 focus:ring-[#10A882] focus:border-[#10A882] transition-colors appearance-none"
-                    >
-                        <option value="" disabled selected>Select an option</option>
-                        <option value="asap">ASAP</option>
-                        <option value="1-3_months">1-3 Months</option>
-                        <option value="3-6_months">3-6 Months</option>
-                        <option value="flexible">Flexible</option>
-                    </select>
-                </div>
-            </div>
-
-            <div className="space-y-2">
-                <label htmlFor="message" className="text-sm font-sans font-medium text-cream ml-1">Project Details <span className="text-red-500">*</span></label>
-                <textarea
-                    {...register("message")}
-                    id="message"
-                    rows={5}
-                    className={cn(
-                        "w-full bg-[#0D1310] border rounded-xl px-4 py-3 text-[#F1F4F2] font-sans placeholder:text-[#A7B0AB]/50 focus:outline-none focus:ring-1 focus:ring-[#10A882] focus:border-[#10A882] transition-colors resize-none",
-                        errors.message ? "border-red-500/50" : "border-[#B4FFD7]/10"
-                    )}
-                    placeholder="Tell us about your project, goals, and any specific requirements..."
-                />
-                {errors.message && <p className="text-red-500 text-xs mt-1 ml-1">{errors.message.message}</p>}
-            </div>
-
-            <Button type="submit" variant="primary" size="lg" className="w-full" disabled={isSubmitting}>
-                {isSubmitting ? (
-                    <>
-                        <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-                        Sending Request...
-                    </>
-                ) : (
-                    "Send Project Request"
+            <button
+                type="submit"
+                disabled={status === "loading"}
+                className={cn(
+                    "w-full flex items-center justify-center gap-3 bg-[#111714] border border-[#10A882]/30 px-8 py-4 rounded-xl text-[15px] font-medium text-white hover:border-[#10A882] hover:bg-[#10A882]/10 hover:shadow-[0_0_30px_rgba(16,168,130,0.15)] transition-all duration-300 group cursor-pointer",
+                    status === "loading" && "opacity-70 cursor-not-allowed"
                 )}
-            </Button>
-
-            <p className="text-center text-[#A7B0AB]/60 text-[11px] leading-relaxed mt-4">
-                By submitting this form, you acknowledge our <Link href="/privacy" className="text-[#A7B0AB] hover:text-[#10A882] underline underline-offset-2 transition-colors">Privacy Policy</Link> and agree that we may use the information provided to respond to your inquiry.
-            </p>
+            >
+                {status === "loading" ? (
+                    <Loader2 className="w-5 h-5 text-[#10A882] animate-spin" />
+                ) : (
+                    <>
+                        <div className="w-6 h-6 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-[#10A882]/20 transition-colors duration-300 border border-white/5">
+                            <ArrowRight className="w-3.5 h-3.5 text-white group-hover:text-[#10A882] transition-colors" />
+                        </div>
+                        Submit
+                    </>
+                )}
+            </button>
         </form>
     );
 }
