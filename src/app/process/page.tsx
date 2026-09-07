@@ -37,23 +37,23 @@ const processSteps = [
 
 export default function ProcessPage() {
     return (
-        <div className="flex flex-col w-full bg-[#080B0A] min-h-screen pt-32">
-            <section className="pb-24 px-4 sm:px-6 lg:px-8">
-                <div className="max-w-7xl mx-auto flex flex-col pt-12">
+        <div className="flex flex-col w-full min-h-screen pt-28 sm:pt-32">
+            <section className="pb-16 sm:pb-20 px-4 sm:px-6 lg:px-8">
+                <div className="max-w-7xl mx-auto flex flex-col pt-8 sm:pt-12">
                     <ScrollReveal>
-                        <h1 className="font-sans font-medium text-5xl sm:text-7xl lg:text-[100px] leading-[1.0] tracking-tight text-[#F1F4F2] mb-12">
+                        <h1 className="font-sans font-medium text-4xl sm:text-6xl lg:text-7xl leading-[1.05] tracking-tight text-[#F1F4F2] mb-6 sm:mb-8">
                             How we work.
                         </h1>
-                        <h3 className="font-sans font-medium text-2xl sm:text-4xl text-[#707A75] mb-8">
+                        <h3 className="font-sans font-medium text-xl sm:text-2xl text-[#707A75] mb-4">
                             You don't need to have everything figured out.
                         </h3>
                     </ScrollReveal>
                 </div>
             </section>
 
-            <section className="pb-32 px-4 sm:px-6 lg:px-8 bg-[#0D1210] border-t border-[#B4FFD7]/10">
-                <div className="max-w-5xl mx-auto pt-16">
-                    <ProcessTimeline steps={processSteps} />
+            <section className="pb-24 sm:pb-32 px-4 sm:px-6 lg:px-8 bg-[#0D1210] border-t border-[#B4FFD7]/10">
+                <div className="max-w-4xl mx-auto pt-12 sm:pt-16">
+                    <ProcessTimeline steps={processSteps} bgClassName="bg-[#0D1210]" />
                 </div>
             </section>
         </div>

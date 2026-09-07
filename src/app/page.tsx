@@ -1,179 +1,325 @@
 import { CinematicHero } from "@/components/home/CinematicHero";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
-import { CaseStudyCard } from "@/components/ui/CaseStudyCard";
-import { ProcessTimeline } from "@/components/ui/ProcessTimeline";
+import { HomeVisualFlow } from "@/components/home/HomeVisualFlow";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Bot, Database, Code2, Sparkles, Layers } from "lucide-react";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Xcecute | AI, Software & Automation",
-  description: "Put the best brains at your service. From custom software to AI and data systems.",
+  title: "Xcecute | AI, Data & Software Engineering",
+  description: "Best brains at your service. Turning ideas, problems, and opportunities into technology that works.",
 };
-
-const capabilitiesList = [
-  { id: "custom-software", num: "01", title: "Custom Software", desc: "Software built around the way your business actually works." },
-  { id: "saas-development", num: "02", title: "SaaS & Product Development", desc: "From an idea to a product people can use." },
-  { id: "ai-solutions", num: "03", title: "AI Solutions", desc: "Practical AI for real problems." },
-  { id: "workflow-automation", num: "04", title: "Workflow Automation", desc: "Less repetitive work. More time for meaningful work." },
-  { id: "data-analytics", num: "05", title: "Data & Analytics", desc: "Turn scattered data into something useful." },
-  { id: "machine-learning", num: "06", title: "Machine Learning", desc: "From data to models that solve specific problems." },
-  { id: "cms-platforms", num: "07", title: "CMS & Digital Platforms", desc: "Content systems that give your team control." },
-];
-
-const processSteps = [
-  { number: "01", title: "Understand", description: "We learn about your business, your users, your existing systems, and the problem you're trying to solve." },
-  { number: "02", title: "Define", description: "We turn the problem into a clear direction.\n\nWhat should we build?\nWhat shouldn't we build?\nWhat matters most right now?" },
-  { number: "03", title: "Design", description: "We think through the experience, workflows, interfaces, and technical structure before going deep into implementation." },
-  { number: "04", title: "Build", description: "We turn the plan into working software.\n\nWe share progress throughout the process so you can see where things are heading and give feedback along the way." },
-  { number: "05", title: "Learn & Improve", description: "Launch isn't necessarily the end.\n\nWe learn from what happens in the real world and improve from there." }
-];
 
 export default function Home() {
   return (
-    <div className="flex flex-col w-full bg-[#080B0A] min-h-screen">
+    <div className="flex flex-col w-full min-h-screen bg-transparent text-[#F1F4F2]">
+      {/* 00 — CINEMATIC HERO */}
       <CinematicHero />
 
-      {/* 2. WHAT WE BUILD */}
+      {/* ========================================================= */}
+      {/* 01 — WHAT WE DO */}
+      {/* ========================================================= */}
+      <section className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 border-t border-[#B4FFD7]/10 bg-[#080B0A] relative z-10">
+        <div className="max-w-6xl mx-auto">
+          <ScrollReveal>
+            <div className="mb-14">
+              <span className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-[#10A882] block mb-3">
+                01 — WHAT WE DO
+              </span>
+              <h2 className="font-sans font-medium text-4xl sm:text-6xl lg:text-7xl text-[#F1F4F2] tracking-tight mb-6">
+                WE BUILD WHAT'S NEXT.
+              </h2>
+              <p className="font-sans text-lg sm:text-2xl text-[#A7B0AB] leading-relaxed max-w-3xl">
+                XCECUTE combines AI, Data, and Software to turn ideas, problems, and opportunities into technology that works.
+              </p>
+            </div>
+
+            {/* Three Simple Interactive Categories */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {/* AI */}
+              <Link
+                href="/services#ai"
+                className="p-8 rounded-3xl bg-[#0D1210] border border-white/10 hover:border-[#10A882]/50 hover:bg-[#111714] transition-all duration-300 group flex flex-col justify-between"
+              >
+                <div>
+                  <div className="w-12 h-12 rounded-2xl bg-[#10A882]/10 border border-[#10A882]/20 flex items-center justify-center text-[#10A882] group-hover:bg-[#10A882] group-hover:text-black transition-all duration-300 mb-8">
+                    <Bot className="w-6 h-6" />
+                  </div>
+                  <h3 className="font-sans font-semibold text-2xl sm:text-3xl text-white mb-2 group-hover:text-[#10A882] transition-colors">
+                    AI
+                  </h3>
+                  <p className="font-sans text-base text-[#A7B0AB] leading-relaxed">
+                    Intelligence &amp; Automation
+                  </p>
+                </div>
+                <div className="mt-8 pt-4 border-t border-white/5 flex items-center justify-between text-xs text-[#10A882] font-semibold">
+                  <span>Explore AI Services</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
+                </div>
+              </Link>
+
+              {/* DATA */}
+              <Link
+                href="/services#data"
+                className="p-8 rounded-3xl bg-[#0D1210] border border-white/10 hover:border-[#10A882]/50 hover:bg-[#111714] transition-all duration-300 group flex flex-col justify-between"
+              >
+                <div>
+                  <div className="w-12 h-12 rounded-2xl bg-[#10A882]/10 border border-[#10A882]/20 flex items-center justify-center text-[#10A882] group-hover:bg-[#10A882] group-hover:text-black transition-all duration-300 mb-8">
+                    <Database className="w-6 h-6" />
+                  </div>
+                  <h3 className="font-sans font-semibold text-2xl sm:text-3xl text-white mb-2 group-hover:text-[#10A882] transition-colors">
+                    DATA
+                  </h3>
+                  <p className="font-sans text-base text-[#A7B0AB] leading-relaxed">
+                    Insights &amp; Decisions
+                  </p>
+                </div>
+                <div className="mt-8 pt-4 border-t border-white/5 flex items-center justify-between text-xs text-[#10A882] font-semibold">
+                  <span>Explore Data Services</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
+                </div>
+              </Link>
+
+              {/* SOFTWARE */}
+              <Link
+                href="/services#software"
+                className="p-8 rounded-3xl bg-[#0D1210] border border-white/10 hover:border-[#10A882]/50 hover:bg-[#111714] transition-all duration-300 group flex flex-col justify-between"
+              >
+                <div>
+                  <div className="w-12 h-12 rounded-2xl bg-[#10A882]/10 border border-[#10A882]/20 flex items-center justify-center text-[#10A882] group-hover:bg-[#10A882] group-hover:text-black transition-all duration-300 mb-8">
+                    <Code2 className="w-6 h-6" />
+                  </div>
+                  <h3 className="font-sans font-semibold text-2xl sm:text-3xl text-white mb-2 group-hover:text-[#10A882] transition-colors">
+                    SOFTWARE
+                  </h3>
+                  <p className="font-sans text-base text-[#A7B0AB] leading-relaxed">
+                    Products &amp; Systems
+                  </p>
+                </div>
+                <div className="mt-8 pt-4 border-t border-white/5 flex items-center justify-between text-xs text-[#10A882] font-semibold">
+                  <span>Explore Software Services</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
+                </div>
+              </Link>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ========================================================= */}
+      {/* 02 — WHAT THAT LOOKS LIKE */}
+      {/* ========================================================= */}
       <section className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 border-t border-[#B4FFD7]/10 bg-[#0A0F0D]">
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 lg:gap-24">
-          <div className="lg:w-1/3">
-            <ScrollReveal>
-              <h2 className="font-sans font-medium text-4xl sm:text-5xl text-[#F1F4F2] mb-6 tracking-tight">What we build.</h2>
-              <p className="font-sans text-lg text-[#A7B0AB] leading-relaxed">
-                We build digital products and systems around real business problems: from custom software and SaaS platforms to AI, automation, data, and machine learning.
-              </p>
-            </ScrollReveal>
-          </div>
+        <div className="max-w-6xl mx-auto">
+          <ScrollReveal>
+            <div className="text-center max-w-2xl mx-auto mb-16">
+              <span className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-[#10A882] block mb-3">
+                02 — WHAT THAT LOOKS LIKE
+              </span>
+              <h2 className="font-sans font-medium text-3xl sm:text-5xl text-[#F1F4F2] tracking-tight">
+                THE ARCHITECTURE OF EXECUTION
+              </h2>
+            </div>
 
-          <div className="lg:w-2/3 flex flex-col">
-            {capabilitiesList.map((cap, i) => (
-              <ScrollReveal key={cap.num} delay={0.1 * i} className="group relative border-b border-[#B4FFD7]/10 hover:bg-[#111714]/40 transition-colors duration-500 ease-out">
-                <Link href={`/services#${cap.id}`} className="flex flex-col sm:flex-row sm:items-center py-10 px-4 sm:px-8 transform group-hover:translate-x-2 transition-transform duration-500 ease-out">
-                  <span className="font-sans text-[13px] text-[#10A882] tracking-[0.2em] uppercase font-medium mb-4 sm:mb-0 sm:w-20 shrink-0 opacity-80 group-hover:opacity-100 transition-opacity">
-                    {cap.num}
-                  </span>
-                  <div className="flex-1">
-                    <h3 className="font-sans text-2xl sm:text-3xl font-medium text-[#F1F4F2] mb-2">{cap.title}</h3>
-                    <p className="font-sans text-[#A7B0AB] text-[15px] max-w-xl group-hover:text-[#F1F4F2] transition-colors">{cap.desc}</p>
-                  </div>
-                  <div className="mt-6 sm:mt-0 opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300">
-                    <ArrowRight className="w-5 h-5 text-[#10A882]" />
-                  </div>
-                </Link>
-              </ScrollReveal>
-            ))}
-          </div>
+            {/* Interactive Visual Flow */}
+            <HomeVisualFlow />
+          </ScrollReveal>
         </div>
       </section>
 
-      {/* 3. HOW WE THINK */}
-      <section className="py-32 sm:py-48 px-4 sm:px-6 lg:px-8 border-t border-[#B4FFD7]/10 bg-[#080B0A]">
-        <div className="max-w-5xl mx-auto flex flex-col items-start gap-12">
+      {/* ========================================================= */}
+      {/* 03 — SERVICES + PRODUCTS */}
+      {/* ========================================================= */}
+      <section className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 border-t border-[#B4FFD7]/10 bg-[#080B0A]">
+        <div className="max-w-6xl mx-auto">
           <ScrollReveal>
-            <div className="font-sans text-xl sm:text-2xl text-[#A7B0AB] leading-relaxed max-w-3xl mb-12">
-              <p className="mb-4">Using too much AI without clear thought or purpose is a mistake.</p>
-              <p className="mb-4">We don't believe every business needs a custom platform.</p>
-              <p>And we don't believe adding more technology automatically creates more value.</p>
+            <div className="mb-14">
+              <span className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-[#10A882] block mb-3">
+                03 — SERVICES + PRODUCTS
+              </span>
+              <h2 className="font-sans font-medium text-3xl sm:text-5xl lg:text-6xl text-[#F1F4F2] tracking-tight mb-6">
+                FROM CUSTOM SOLUTIONS TO PRODUCTS.
+              </h2>
+              <p className="font-sans text-lg sm:text-xl text-[#A7B0AB] leading-relaxed max-w-3xl">
+                We work with businesses to build intelligent solutions — and turn powerful ideas into scalable products.
+              </p>
+            </div>
+
+            {/* Two Large Interactive Options */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* Option 1: SERVICES */}
+              <Link
+                href="/services"
+                className="p-8 sm:p-12 rounded-3xl bg-[#0D1210] border border-white/10 hover:border-[#10A882]/50 hover:bg-[#111714] transition-all duration-300 group flex flex-col justify-between relative overflow-hidden"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-8">
+                    <span className="font-mono text-xs font-semibold text-[#10A882] tracking-wider uppercase">
+                      CLIENT ENGAGEMENTS
+                    </span>
+                    <ArrowRight className="w-6 h-6 text-[#10A882] group-hover:translate-x-2 transition-transform" />
+                  </div>
+                  <h3 className="font-sans font-semibold text-3xl sm:text-4xl text-white mb-4 group-hover:text-[#10A882] transition-colors">
+                    SERVICES →
+                  </h3>
+                  <p className="font-sans text-xl text-[#F1F4F2]/90 font-medium mb-2">
+                    AI &bull; Data &bull; Software
+                  </p>
+                  <p className="font-sans text-sm text-[#A7B0AB] leading-relaxed">
+                    Bespoke engineering designed around your unique operational workflows, proprietary data, and commercial targets.
+                  </p>
+                </div>
+              </Link>
+
+              {/* Option 2: PRODUCTS */}
+              <Link
+                href="/products"
+                className="p-8 sm:p-12 rounded-3xl bg-[#0D1210] border border-white/10 hover:border-[#10A882]/50 hover:bg-[#111714] transition-all duration-300 group flex flex-col justify-between relative overflow-hidden"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-8">
+                    <span className="font-mono text-xs font-semibold text-[#10A882] tracking-wider uppercase">
+                      PROPRIETARY PLATFORMS
+                    </span>
+                    <ArrowRight className="w-6 h-6 text-[#10A882] group-hover:translate-x-2 transition-transform" />
+                  </div>
+                  <h3 className="font-sans font-semibold text-3xl sm:text-4xl text-white mb-4 group-hover:text-[#10A882] transition-colors">
+                    PRODUCTS →
+                  </h3>
+                  <p className="font-sans text-xl text-[#F1F4F2]/90 font-medium mb-2">
+                    Built by XCECUTE
+                  </p>
+                  <p className="font-sans text-sm text-[#A7B0AB] leading-relaxed">
+                    Packaged conversational agents, telemetry platforms, and enterprise modules available for instant pilot deployment.
+                  </p>
+                </div>
+              </Link>
             </div>
           </ScrollReveal>
+        </div>
+      </section>
 
-          <ScrollReveal direction="down">
-            <h2 className="font-sans font-medium text-5xl sm:text-7xl lg:text-[90px] leading-[1.05] tracking-tight text-[#F1F4F2] mb-12">
-              We start with<br />the problem.
+      {/* ========================================================= */}
+      {/* 04 — WHY XCECUTE */}
+      {/* ========================================================= */}
+      <section className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 border-t border-[#B4FFD7]/10 bg-[#0A0F0D]">
+        <div className="max-w-6xl mx-auto">
+          <ScrollReveal>
+            <div className="mb-16">
+              <span className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-[#10A882] block mb-3">
+                04 — PRINCIPLES
+              </span>
+              <h2 className="font-sans font-medium text-4xl sm:text-6xl text-[#F1F4F2] tracking-tight">
+                BUILT WITH PURPOSE.
+              </h2>
+            </div>
+
+            {/* Large Typography Layout (No Cluttered Card Grid) */}
+            <div className="space-y-12">
+              <div className="p-8 sm:p-12 rounded-3xl bg-[#0D1210]/60 border border-white/5 hover:border-[#10A882]/30 transition-all duration-300 group flex flex-col md:flex-row md:items-center justify-between gap-6">
+                <div>
+                  <span className="font-mono text-xs text-[#10A882] block mb-2">01 // PHILOSOPHY</span>
+                  <h3 className="font-sans text-2xl sm:text-4xl font-medium text-white group-hover:text-[#10A882] transition-colors mb-2">
+                    Problem First
+                  </h3>
+                  <p className="font-sans text-base sm:text-xl text-[#A7B0AB]">
+                    We understand before we build.
+                  </p>
+                </div>
+              </div>
+
+              <div className="p-8 sm:p-12 rounded-3xl bg-[#0D1210]/60 border border-white/5 hover:border-[#10A882]/30 transition-all duration-300 group flex flex-col md:flex-row md:items-center justify-between gap-6">
+                <div>
+                  <span className="font-mono text-xs text-[#10A882] block mb-2">02 // SELECTION</span>
+                  <h3 className="font-sans text-2xl sm:text-4xl font-medium text-white group-hover:text-[#10A882] transition-colors mb-2">
+                    Technology That Matters
+                  </h3>
+                  <p className="font-sans text-base sm:text-xl text-[#A7B0AB]">
+                    We use technology where it creates real value.
+                  </p>
+                </div>
+              </div>
+
+              <div className="p-8 sm:p-12 rounded-3xl bg-[#0D1210]/60 border border-white/5 hover:border-[#10A882]/30 transition-all duration-300 group flex flex-col md:flex-row md:items-center justify-between gap-6">
+                <div>
+                  <span className="font-mono text-xs text-[#10A882] block mb-2">03 // EXECUTION</span>
+                  <h3 className="font-sans text-2xl sm:text-4xl font-medium text-white group-hover:text-[#10A882] transition-colors mb-2">
+                    Built to Work
+                  </h3>
+                  <p className="font-sans text-base sm:text-xl text-[#A7B0AB]">
+                    From idea to implementation.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ========================================================= */}
+      {/* 05 — ABOUT SUMMARY */}
+      {/* ========================================================= */}
+      <section className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 border-t border-[#B4FFD7]/10 bg-[#080B0A]">
+        <div className="max-w-4xl mx-auto">
+          <ScrollReveal>
+            <span className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-[#10A882] block mb-3">
+              05 — ABOUT SUMMARY
+            </span>
+            <h2 className="font-sans font-medium text-4xl sm:text-6xl text-[#F1F4F2] tracking-tight mb-8">
+              WHO IS XCECUTE?
             </h2>
-          </ScrollReveal>
 
-          <ScrollReveal>
-            <div className="font-sans text-lg sm:text-xl text-[#A7B0AB] leading-relaxed max-w-3xl space-y-6">
-              <p>Then we choose the technology that makes the most sense.</p>
-              <p>Sometimes that's a simple automation. Sometimes it's a custom application. Sometimes it's a SaaS platform, an analytics system, an AI feature, or a machine learning model.</p>
-              <p className="text-[#F1F4F2] text-2xl sm:text-3xl font-medium mt-12 block">
-                The technology is the tool.<br />The problem is what we're here to solve.
+            <div className="font-sans text-xl sm:text-2xl text-[#A7B0AB] leading-relaxed space-y-6 mb-12">
+              <p>
+                XCECUTE is a technology company building practical solutions across AI, software, and data.
+              </p>
+              <p className="text-white font-medium">
+                We focus on turning complex problems into simple, useful systems.
               </p>
             </div>
-          </ScrollReveal>
-        </div>
-      </section>
 
-      {/* 4. SELECTED WORK */}
-      <section className="py-24 sm:py-32 border-t border-[#B4FFD7]/10 bg-[#0D1210]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20 flex flex-col sm:flex-row justify-between items-end gap-8">
-          <ScrollReveal>
-            <h2 className="font-sans font-medium text-4xl sm:text-5xl text-[#F1F4F2] tracking-tight mb-4">Selected work.</h2>
-            <p className="font-sans text-lg text-[#A7B0AB]">Things we've built, explored, and learned from.</p>
-          </ScrollReveal>
-          <ScrollReveal delay={0.2}>
-            <Link href="/work" className="inline-flex items-center text-[#10A882] font-sans font-medium hover:text-[#5EE6A0] transition-colors group">
-              <span className="mr-2">View all work</span>
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            <Link
+              href="/about"
+              className="inline-flex items-center gap-2 bg-[#111714] border border-[#B4FFD7]/15 hover:border-[#10A882]/40 hover:bg-[#151D19] text-[#F1F4F2] px-8 py-4 rounded-full text-sm font-medium transition-all duration-300 group"
+            >
+              <span>ABOUT XCECUTE</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 group-hover:text-[#10A882] transition-all" />
             </Link>
           </ScrollReveal>
         </div>
-
-        <div className="flex flex-col">
-          <CaseStudyCard
-            slug="fintech-dashboard"
-            category="SaaS / Web App"
-            title="Global Fintech Analytics Dashboard"
-            problem="Existing analytics infrastructure could not scale to process increasing volumes of transaction data in real time."
-            approach="Re-architected the data fetching pipeline to utilize server-side aggregation and optimized caching layers."
-            build="A custom UI frontend integrated with a high-performance backend, designed specifically for rapid data visualization."
-            outcome="300% increase in load speed for large datasets."
-            delay={0.1}
-          />
-          <CaseStudyCard
-            slug="ai-workflow"
-            category="AI Automation"
-            title="Autonomous Supply Chain AI"
-            problem="Manual supply chain data entry was bottlenecking operations and causing compliance delays."
-            approach="Integrated an AI-driven extraction layer to identify and structure data from invoices and shipping manifests automatically."
-            build="A custom internal tool featuring automated document ingestion, AI-based OCR, and a human-in-the-loop review interface."
-            outcome="Saved 40hrs/week in manual data entry."
-            delay={0.2}
-          />
-        </div>
       </section>
 
-      {/* 5. HOW WE WORK (PROCESS) */}
-      <section className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 border-t border-[#B4FFD7]/10 bg-[#080B0A]">
-        <div className="max-w-7xl mx-auto">
-          <ScrollReveal className="mb-24">
-            <h2 className="font-sans font-medium text-4xl sm:text-5xl text-[#F1F4F2] tracking-tight mb-6">How we work.</h2>
-            <h3 className="font-sans text-2xl sm:text-3xl text-[#707A75] font-medium tracking-tight">You don't need to have everything figured out.</h3>
-          </ScrollReveal>
-          <div className="max-w-4xl">
-            <ProcessTimeline steps={processSteps} />
-          </div>
-        </div>
-      </section>
-
-      {/* 6. ABOUT PHILOSOPHY */}
-      <section className="py-32 sm:py-48 px-4 sm:px-6 lg:px-8 border-t border-[#B4FFD7]/10 bg-[#0A0F0D]">
-        <div className="max-w-4xl mx-auto">
+      {/* ========================================================= */}
+      {/* 06 — FINAL CTA & HOMEPAGE MANIFESTO */}
+      {/* ========================================================= */}
+      <section className="py-28 sm:py-36 px-4 sm:px-6 lg:px-8 border-t border-[#B4FFD7]/10 bg-[#0A0F0D] text-center relative overflow-hidden">
+        <div className="max-w-4xl mx-auto relative z-10">
           <ScrollReveal>
-            <h2 className="font-sans font-medium text-5xl sm:text-6xl lg:text-7xl text-[#F1F4F2] tracking-tight mb-12 leading-[1.05]">
-              We're building something of our own.
+            <h2 className="font-sans font-medium text-4xl sm:text-6xl lg:text-7xl text-[#F1F4F2] tracking-tight mb-6">
+              WHAT ARE YOU TRYING TO BUILD?
             </h2>
+            <p className="font-sans text-lg sm:text-2xl text-[#A7B0AB] leading-relaxed mb-10 max-w-2xl mx-auto">
+              Let's turn the idea into something real.
+            </p>
 
-            <div className="font-sans text-xl sm:text-2xl text-[#A7B0AB] leading-relaxed space-y-8">
-              <p>
-                We're engineers, designers, and builders who decided to stop waiting for the perfect idea and start building.
-              </p>
-              <p>
-                We started this company because we enjoy solving difficult problems. Not just writing code, but understanding why something needs to exist, who it is for, and how it can actually make a difference.
-              </p>
-              <p className="text-[#F1F4F2] font-medium">
-                You bring us the problem, the idea, or even just a rough direction.<br />
-                We figure it out with you.
-              </p>
-            </div>
+            <Link
+              href="/contact"
+              className="inline-flex items-center text-[15px] tracking-wide font-semibold text-black bg-white border-2 border-[#10A882] hover:bg-[#F1F4F2] px-9 py-4 rounded-full shadow-[0_0_30px_rgba(16,168,130,0.25)] hover:shadow-[0_0_35px_rgba(16,168,130,0.4)] transition-all duration-300 group mb-20"
+            >
+              <span>START A PROJECT</span>
+              <ArrowRight className="w-5 h-5 ml-3 text-black group-hover:translate-x-1 transition-transform" />
+            </Link>
 
-            <div className="mt-16">
-              <Link href="/about" className="inline-flex items-center text-[15px] tracking-wide font-medium text-[#F1F4F2] bg-[#111714] border border-[#B4FFD7]/10 px-8 py-4 rounded-full group hover:bg-[#151D19] hover:border-[#10A882]/25 hover:shadow-[0_0_30px_rgba(53,208,127,0.06)] transition-all duration-300">
-                More about us
-                <ArrowRight className="w-4 h-4 ml-3 group-hover:translate-x-1 group-hover:text-[#10A882] transition-all" />
-              </Link>
+            {/* Final homepage message */}
+            <div className="pt-16 border-t border-white/5 flex flex-col items-center">
+              <div className="font-mono text-sm sm:text-base tracking-[0.3em] text-[#A7B0AB] space-y-2 mb-4">
+                <div>WE THINK.</div>
+                <div>WE BUILD.</div>
+                <div className="text-white font-semibold">WE EXECUTE.</div>
+              </div>
+              <div className="font-mono text-xs sm:text-sm tracking-[0.25em] text-[#10A882] font-semibold">
+                AI + DATA + SOFTWARE.
+              </div>
             </div>
           </ScrollReveal>
         </div>

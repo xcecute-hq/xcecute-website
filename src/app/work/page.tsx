@@ -66,7 +66,7 @@ const caseStudies = [
 
 export default function WorkPage() {
     return (
-        <div className="flex flex-col w-full bg-[#080B0A] min-h-screen pt-32">
+        <div className="flex flex-col w-full min-h-screen pt-32">
             <section className="pb-24 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-7xl mx-auto flex flex-col pt-12">
                     <ScrollReveal>

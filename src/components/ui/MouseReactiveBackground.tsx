@@ -166,7 +166,7 @@ export function MouseReactiveBackground() {
         <canvas
             ref={canvasRef}
             className="absolute inset-0 w-full h-full pointer-events-none z-0"
-            style={{ display: 'block', background: '#080B0A' }}
+            style={{ display: 'block', background: 'transparent' }}
         />
     );
 }

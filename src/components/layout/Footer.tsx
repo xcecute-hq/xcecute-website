@@ -48,7 +48,13 @@ export function Footer() {
                                 <Link href="mailto:xcecute.hq@gmail.com">xcecute.hq@gmail.com</Link>
                             </Button>
                             <Button asChild variant="secondary" className="w-fit">
-                                <Link href="tel:+919551091144">9551091144 / 7204009267</Link>
+                                <Link href="tel:+917204009267">+91 72040 09267</Link>
+                            </Button>
+                            <Button asChild variant="secondary" className="w-fit">
+                                <Link href="tel:+918904350725">+91 89043 50725</Link>
+                            </Button>
+                            <Button asChild variant="secondary" className="w-fit">
+                                <Link href="tel:+919551091144">+91 95510 91144</Link>
                             </Button>
                         </div>
                     </div>

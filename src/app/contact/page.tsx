@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
     return (
-        <div className="flex flex-col w-full bg-[#080B0A] min-h-screen relative z-10">
+        <div className="flex flex-col w-full min-h-screen relative z-10">
             <section className="pt-40 pb-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#10A882]/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
 
@@ -34,7 +34,9 @@ export default function ContactPage() {
                             <div className="flex flex-col gap-1">
                                 <h4 className="font-sans font-semibold text-[#A7B0AB] text-[11px] uppercase tracking-wider mb-2">Direct</h4>
                                 <a href="mailto:xcecute.hq@gmail.com" className="font-sans text-lg text-[#F1F4F2] hover:text-[#10A882] transition-colors">xcecute.hq@gmail.com</a>
-                                <a href="tel:+919551091144" className="font-sans text-lg text-[#F1F4F2] hover:text-[#10A882] transition-colors">9551091144 / 7204009267</a>
+                                <a href="tel:+917204009267" className="font-sans text-lg text-[#F1F4F2] hover:text-[#10A882] transition-colors">+91 72040 09267</a>
+                                <a href="tel:+918904350725" className="font-sans text-lg text-[#F1F4F2] hover:text-[#10A882] transition-colors">+91 89043 50725</a>
+                                <a href="tel:+919551091144" className="font-sans text-lg text-[#F1F4F2] hover:text-[#10A882] transition-colors">+91 95510 91144</a>
                             </div>
                         </ScrollReveal>
                     </div>

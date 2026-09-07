@@ -19,7 +19,7 @@ const values = [
 
 export default function AboutPage() {
     return (
-        <div className="flex flex-col w-full bg-[#080B0A] min-h-screen pt-32 relative z-10 overflow-hidden">
+        <div className="flex flex-col w-full min-h-screen pt-32 relative z-10 overflow-hidden">
 
             {/* THE AGENCY */}
             <section className="pb-32 px-4 sm:px-6 lg:px-8">
@@ -37,7 +37,7 @@ export default function AboutPage() {
                                 We're engineers, designers, and builders who decided to stop waiting for the perfect idea and start building. We started this company because we enjoy solving difficult problems. Not just writing code, but understanding <span className="text-[#F1F4F2]">why something needs to exist, who it is for, and how it can actually make a difference.</span>
                             </p>
                             <p>
-                                We know what it feels like to start with an idea and not have everything figured out yet. That's why we don't believe in making things unnecessarily complicated. You bring us the problem, the idea, or even just a rough direction. <span className="text-[#10A882]">We figure it out with you.</span>
+                                We know what it feels like to start with an idea and not have everything figured out yet. That's why we don't believe in making things unnecessarily complicated. You bring us the problem, the idea, or even just a rough direction. <span className="text-[#10A882]">We figure it out for you.</span>
                             </p>
                             <p>
                                 Sometimes that means building a product from scratch. Sometimes it's automating a process your team is tired of doing manually. Sometimes it's fixing something that has grown messy over time. Whatever the problem is, we want to understand it before we start building.
@@ -129,9 +129,9 @@ export default function AboutPage() {
                             <span className="text-[#F1F4F2]">If you have an idea, a problem, or something you've been putting off fixing – tell us about it.</span>
                         </p>
 
-                        <Link href="/contact" className="inline-flex items-center text-[15px] tracking-wide font-medium text-[#F1F4F2] bg-[#111714] border border-[#B4FFD7]/10 px-8 py-4 rounded-full group hover:bg-[#151D19] hover:border-[#10A882]/25 hover:shadow-[0_0_30px_rgba(53,208,127,0.06)] transition-all duration-300">
+                        <Link href="/contact" className="inline-flex items-center text-[15px] tracking-wide font-semibold text-black bg-white border-2 border-[#10A882] hover:bg-[#F1F4F2] px-8 py-4 rounded-full shadow-[0_0_30px_rgba(16,168,130,0.25)] hover:shadow-[0_0_35px_rgba(16,168,130,0.4)] transition-all duration-300 group">
                             Contact Us
-                            <ArrowRight className="w-4 h-4 ml-3 group-hover:translate-x-1 group-hover:text-[#10A882] transition-all" />
+                            <ArrowRight className="w-4 h-4 ml-3 text-black group-hover:translate-x-1 transition-transform" />
                         </Link>
                     </ScrollReveal>
                 </div>
