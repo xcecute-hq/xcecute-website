@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { MouseReactiveBackground } from "@/components/ui/MouseReactiveBackground";
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState, useRef } from "react";
 
 const LINE1_TEXT = "BEST BRAINS";
@@ -18,11 +19,9 @@ function TextCaret({ visible, isStart = false, size = "large" }: { visible: bool
             style={{ opacity: visible ? 1 : 0 }}
         >
             <span
-                className={`absolute top-0 h-full bg-[#10A882] rounded-full shadow-[0_0_12px_rgba(16,168,130,0.85)] ${
-                    size === "small" ? "w-[2px] sm:w-[3px]" : "w-[2.5px] sm:w-[4px]"
-                } ${
-                    isStart ? "-left-[1px] sm:-left-[2px]" : "left-[1.5px] sm:left-[2.5px]"
-                }`}
+                className={`absolute top-0 h-full bg-[#10A882] rounded-full shadow-[0_0_12px_rgba(16,168,130,0.85)] ${size === "small" ? "w-[2px] sm:w-[3px]" : "w-[2.5px] sm:w-[4px]"
+                    } ${isStart ? "-left-[1px] sm:-left-[2px]" : "left-[1.5px] sm:left-[2.5px]"
+                    }`}
             />
         </span>
     );
@@ -124,7 +123,7 @@ export function CinematicHero() {
                     transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0 }}
                     className="flex items-center justify-center w-full -mb-6 sm:-mb-10 mt-4"
                 >
-                    <img src="/Logo_with_name-removebg-preview.svg" alt="XCECUTE Logo" className="h-28 md:h-44 w-auto object-contain" />
+                    <Image src="/Logo_with_name-removebg-preview.svg" alt="XCECUTE Logo" width={600} height={176} className="h-28 md:h-44 w-auto object-contain" priority />
                 </motion.div>
 
                 {/* PROGRESSIVE CINEMATIC TEXT REVEAL */}

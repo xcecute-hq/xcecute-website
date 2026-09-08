@@ -59,8 +59,6 @@ export function HomeVisualFlow() {
                 {FLOW_NODES.map((node, index) => {
                     const IconComp = node.icon;
                     const isHovered = hoveredNode === node.id;
-                    const isSpecial = node.id === "catalyst" || node.id === "engine";
-
                     return (
                         <div key={node.id} className="w-full flex flex-col items-center">
                             {/* Interactive Stage Card */}
@@ -69,8 +67,8 @@ export function HomeVisualFlow() {
                                 className={cn(
                                     "w-full max-w-2xl p-6 sm:p-8 rounded-3xl transition-all duration-500 cursor-pointer relative overflow-hidden group",
                                     isHovered
-                                        ? "bg-[#111714] border-[#10A882]/60 shadow-[0_0_40px_rgba(16,168,130,0.18)] scale-[1.02]"
-                                        : "bg-[#0D1210]/90 border-white/10 hover:border-white/20"
+                                        ? "bg-[#080A09] border-[#10A882]/30 shadow-[0_0_30px_rgba(16,168,130,0.1)] scale-[1.02]"
+                                        : "bg-[#030504]/95 border-white/5 hover:border-white/10"
                                 )}
                                 style={{
                                     borderWidth: "1px",
@@ -87,8 +85,8 @@ export function HomeVisualFlow() {
                                         <div className={cn(
                                             "w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-300 shrink-0",
                                             isHovered
-                                                ? "bg-[#10A882] text-black shadow-[0_0_20px_rgba(16,168,130,0.4)]"
-                                                : "bg-white/5 border border-white/10 text-white group-hover:text-[#10A882]"
+                                                ? "bg-black text-[#10A882] border-[#10A882]/50 shadow-[0_0_15px_rgba(16,168,130,0.2)]"
+                                                : "bg-black border border-white/10 text-white group-hover:text-[#10A882]"
                                         )}>
                                             <IconComp className="w-5 h-5" />
                                         </div>
@@ -97,10 +95,7 @@ export function HomeVisualFlow() {
                                             <span className="font-mono text-[11px] font-semibold tracking-[0.2em] text-[#10A882] uppercase block mb-1">
                                                 {node.step}
                                             </span>
-                                            <h3 className={cn(
-                                                "font-sans font-semibold text-lg sm:text-2xl tracking-tight transition-colors",
-                                                isSpecial ? "text-[#10A882]" : "text-white"
-                                            )}>
+                                            <h3 className="font-sans font-semibold text-lg sm:text-2xl tracking-tight transition-colors text-white">
                                                 {node.title}
                                             </h3>
                                         </div>
@@ -115,7 +110,7 @@ export function HomeVisualFlow() {
                             {/* Connecting Pulse Line */}
                             {index < FLOW_NODES.length - 1 && (
                                 <div className="py-3 sm:py-4 flex flex-col items-center relative">
-                                    <div className="w-[2px] h-8 sm:h-12 bg-gradient-to-b from-white/10 via-[#10A882]/50 to-white/10 relative overflow-hidden">
+                                    <div className="w-[2px] h-8 sm:h-12 bg-gradient-to-b from-white/10 via-[#10A882]/30 to-white/10 relative overflow-hidden">
                                         <motion.div
                                             animate={{ y: ["-100%", "200%"] }}
                                             transition={{ duration: 1.8, repeat: Infinity, ease: "linear", delay: index * 0.4 }}

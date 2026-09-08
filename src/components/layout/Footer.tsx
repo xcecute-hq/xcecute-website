@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 
 const FOOTER_LINKS = {
@@ -13,11 +14,7 @@ const FOOTER_LINKS = {
         { name: "About", href: "/about" },
         { name: "Contact", href: "/contact" },
     ],
-    socials: [
-        { name: "Twitter / X", href: "#" },
-        { name: "LinkedIn", href: "#" },
-        { name: "GitHub", href: "#" },
-    ],
+    socials: [],
     legal: [
         { name: "Privacy Policy", href: "/privacy" },
         { name: "Terms & Conditions", href: "/terms" },
@@ -38,7 +35,7 @@ export function Footer() {
                             href="/"
                             className="flex items-center gap-3 w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary rounded-md"
                         >
-                            <img src="/Logo_with_name-removebg-preview.svg" alt="XCECUTE Logo" className="h-14 md:h-16 w-auto object-contain" />
+                            <Image src="/Logo_with_name-removebg-preview.svg" alt="XCECUTE Logo" width={200} height={64} className="h-14 md:h-16 w-auto object-contain" />
                         </Link>
                         <p className="text-muted text-base max-w-sm leading-relaxed">
                             We turn complex ideas into digital products people use. Engineered for scale, designed for impact.
@@ -46,15 +43,6 @@ export function Footer() {
                         <div className="flex flex-col gap-2 mt-2">
                             <Button asChild variant="secondary" className="w-fit">
                                 <Link href="mailto:xcecute.hq@gmail.com">xcecute.hq@gmail.com</Link>
-                            </Button>
-                            <Button asChild variant="secondary" className="w-fit">
-                                <Link href="tel:+917204009267">+91 72040 09267</Link>
-                            </Button>
-                            <Button asChild variant="secondary" className="w-fit">
-                                <Link href="tel:+918904350725">+91 89043 50725</Link>
-                            </Button>
-                            <Button asChild variant="secondary" className="w-fit">
-                                <Link href="tel:+919551091144">+91 95510 91144</Link>
                             </Button>
                         </div>
                     </div>
@@ -91,21 +79,7 @@ export function Footer() {
                         </ul>
                     </div>
 
-                    <div>
-                        <h3 className="font-sans font-semibold text-cream mb-6">Socials</h3>
-                        <ul className="flex flex-col gap-4">
-                            {FOOTER_LINKS.socials.map((link) => (
-                                <li key={link.name}>
-                                    <Link
-                                        href={link.href}
-                                        className="text-muted hover:text-accent-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary rounded-sm"
-                                    >
-                                        {link.name}
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
+
 
                     <div>
                         <h3 className="font-sans font-semibold text-cream mb-6">Legal</h3>

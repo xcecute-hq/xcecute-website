@@ -7,7 +7,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Xcecute | AI, Data & Software Engineering",
-  description: "Best brains at your service. Turning ideas, problems, and opportunities into technology that works.",
+  description: "Strategic engineering. Turning ideas, problems, and opportunities into technology that works.",
 };
 
 export default function Home() {
@@ -109,14 +109,19 @@ export default function Home() {
       {/* ========================================================= */}
       {/* 02 — WHAT THAT LOOKS LIKE */}
       {/* ========================================================= */}
-      <section className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 border-t border-[#B4FFD7]/10 bg-[#0A0F0D]">
+      <section className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 border-t border-[#B4FFD7]/10 bg-black relative overflow-hidden">
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
-            <div className="text-center max-w-2xl mx-auto mb-16">
+            {/* Atmospheric Backgrounds for Architecture Section */}
+            <div className="absolute inset-0 pointer-events-none opacity-20 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+            <div className="absolute top-10 right-0 w-[600px] h-[600px] bg-[#10A882]/5 blur-[120px] rounded-full pointer-events-none" />
+            <div className="absolute right-[-10%] top-[10%] w-[40%] h-[80%] border-r-[1px] border-[#10A882]/10 rounded-[100%] pointer-events-none blur-[1px]" />
+
+            <div className="text-center max-w-2xl mx-auto mb-16 relative z-10">
               <span className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-[#10A882] block mb-3">
                 02 — WHAT THAT LOOKS LIKE
               </span>
-              <h2 className="font-sans font-medium text-3xl sm:text-5xl text-[#F1F4F2] tracking-tight">
+              <h2 className="font-sans font-medium text-3xl sm:text-5xl text-white tracking-tight">
                 THE ARCHITECTURE OF EXECUTION
               </h2>
             </div>

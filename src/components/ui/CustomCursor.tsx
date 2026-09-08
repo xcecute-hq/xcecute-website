@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-import { motion, AnimatePresence, useMotionValue, useSpring } from "framer-motion";
+import { motion, AnimatePresence, useMotionValue, useSpring, useReducedMotion } from "framer-motion";
 
 export function CustomCursor() {
     const cursorX = useMotionValue(-100);
@@ -88,7 +88,9 @@ export function CustomCursor() {
     const cursorXSpring = useSpring(cursorX, springConfig);
     const cursorYSpring = useSpring(cursorY, springConfig);
 
-    if (isTouch) return null;
+    const shouldReduceMotion = useReducedMotion();
+
+    if (isTouch || shouldReduceMotion) return null;
 
     return (
         <div className="fixed inset-0 pointer-events-none z-[10000] hidden md:block">

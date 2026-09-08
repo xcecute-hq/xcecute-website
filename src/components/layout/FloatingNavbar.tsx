@@ -77,6 +77,26 @@ export function FloatingNavbar() {
         }, 200);
     };
 
+    const handleKeyDownDropdown = (e: React.KeyboardEvent, name: "services" | "products") => {
+        if (e.key === "Enter" || e.key === " ") {
+            if (activeDropdown !== name) {
+                e.preventDefault();
+                handleMouseEnter(name);
+            }
+        }
+    };
+
+    useEffect(() => {
+        const handleGlobalKeyDown = (e: KeyboardEvent) => {
+            if (e.key === "Escape") {
+                setActiveDropdown(null);
+                setMobileMenuOpen(false);
+            }
+        };
+        document.addEventListener("keydown", handleGlobalKeyDown);
+        return () => document.removeEventListener("keydown", handleGlobalKeyDown);
+    }, []);
+
     return (
         <motion.header
             ref={navRef}
@@ -92,7 +112,7 @@ export function FloatingNavbar() {
                 "rounded-full px-5 sm:px-6 py-3 flex items-center justify-between max-w-6xl mx-auto transition-all duration-500 relative",
                 isScrolled
                     ? "bg-black/80 backdrop-blur-xl border border-[#B4FFD7]/15 shadow-[0_0_30px_rgba(0,0,0,0.8)]"
-                    : "bg-[#080B0A]/70 backdrop-blur-md border border-white/10"
+                    : "bg-black/60 backdrop-blur-md border border-[#10A882]/20"
             )}>
 
                 {/* Left Side: Brand Logo */}
@@ -126,12 +146,14 @@ export function FloatingNavbar() {
                             className="relative"
                             onMouseEnter={() => handleMouseEnter("services")}
                             onMouseLeave={handleMouseLeave}
+                            onFocus={() => handleMouseEnter("services")}
                         >
                             <Link
                                 href="/services"
                                 onClick={() => setActiveDropdown(null)}
+                                onKeyDown={(e) => handleKeyDownDropdown(e, "services")}
                                 className={cn(
-                                    "px-3.5 py-1.5 rounded-full transition-all duration-300 inline-flex items-center gap-1.5 cursor-pointer",
+                                    "px-3.5 py-1.5 rounded-full transition-all duration-300 inline-flex items-center gap-1.5 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10A882]",
                                     activeDropdown === "services" || pathname.startsWith("/services")
                                         ? "text-white bg-[#10A882]/15 text-[#10A882] border border-[#10A882]/30"
                                         : "text-[#A7B0AB] hover:text-white hover:bg-white/5 border border-transparent"
@@ -150,12 +172,14 @@ export function FloatingNavbar() {
                             className="relative"
                             onMouseEnter={() => handleMouseEnter("products")}
                             onMouseLeave={handleMouseLeave}
+                            onFocus={() => handleMouseEnter("products")}
                         >
                             <Link
                                 href="/products"
                                 onClick={() => setActiveDropdown(null)}
+                                onKeyDown={(e) => handleKeyDownDropdown(e, "products")}
                                 className={cn(
-                                    "px-3.5 py-1.5 rounded-full transition-all duration-300 inline-flex items-center gap-1.5 cursor-pointer",
+                                    "px-3.5 py-1.5 rounded-full transition-all duration-300 inline-flex items-center gap-1.5 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10A882]",
                                     activeDropdown === "products" || pathname.startsWith("/products")
                                         ? "text-white bg-[#10A882]/15 text-[#10A882] border border-[#10A882]/30"
                                         : "text-[#A7B0AB] hover:text-white hover:bg-white/5 border border-transparent"
@@ -201,11 +225,11 @@ export function FloatingNavbar() {
                 <div className="flex items-center gap-3">
                     <Link
                         href="/contact"
-                        className="rounded-full px-5 py-2 text-[13px] tracking-wide font-semibold text-black bg-white border-2 border-[#10A882] hover:bg-[#F1F4F2] hover:shadow-[0_0_20px_rgba(16,168,130,0.35)] transition-all duration-300 hidden sm:block group"
+                        className="rounded-full px-5 py-2 text-[13px] tracking-wide font-semibold text-white bg-black/50 border border-[#10A882]/40 hover:bg-[#10A882]/10 hover:border-[#10A882]/70 shadow-[0_0_15px_rgba(16,168,130,0.15)] transition-all duration-300 hidden sm:block group"
                     >
-                        <span className="flex items-center gap-2 text-black">
+                        <span className="flex items-center gap-2 text-white">
                             Contact Us
-                            <ArrowRight className="w-4 h-4 text-black group-hover:translate-x-1 transition-transform" />
+                            <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-1 transition-transform" />
                         </span>
                     </Link>
 
@@ -231,6 +255,7 @@ export function FloatingNavbar() {
                         exit={{ opacity: 0, y: 6, scale: 0.99 }}
                         onMouseEnter={() => handleMouseEnter("services")}
                         onMouseLeave={handleMouseLeave}
+                        onFocus={() => handleMouseEnter("services")}
                         className="hidden lg:block absolute left-4 right-4 max-w-6xl mx-auto top-full mt-2 before:content-[''] before:absolute before:-top-3 before:left-0 before:right-0 before:h-3 p-8 rounded-3xl bg-[#080B0A]/95 backdrop-blur-2xl border border-[#B4FFD7]/20 shadow-[0_20px_60px_rgba(0,0,0,0.9)] z-50 overflow-hidden"
                     >
                         {/* Ambient subtle glow inside mega-menu */}
@@ -259,7 +284,7 @@ export function FloatingNavbar() {
                                                     <Link
                                                         href={item.path}
                                                         onClick={() => setActiveDropdown(null)}
-                                                        className="group flex items-start gap-2.5 p-2 rounded-xl hover:bg-[#10A882]/10 hover:border hover:border-[#10A882]/30 border border-transparent transition-all duration-200"
+                                                        className="group flex items-start gap-2.5 p-2 rounded-xl hover:bg-[#10A882]/10 hover:border hover:border-[#10A882]/30 border border-transparent transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10A882]"
                                                     >
                                                         <div className="flex flex-col">
                                                             <span className="text-xs font-medium text-[#F1F4F2] group-hover:text-[#10A882] transition-colors flex items-center gap-1.5">
@@ -305,6 +330,7 @@ export function FloatingNavbar() {
                         exit={{ opacity: 0, y: 6, scale: 0.99 }}
                         onMouseEnter={() => handleMouseEnter("products")}
                         onMouseLeave={handleMouseLeave}
+                        onFocus={() => handleMouseEnter("products")}
                         className="hidden lg:block absolute left-1/4 right-1/4 max-w-3xl mx-auto top-full mt-2 before:content-[''] before:absolute before:-top-3 before:left-0 before:right-0 before:h-3 p-6 rounded-3xl bg-[#080B0A]/95 backdrop-blur-2xl border border-[#B4FFD7]/20 shadow-[0_20px_60px_rgba(0,0,0,0.9)] z-50 overflow-hidden"
                     >
                         <div className="grid grid-cols-2 gap-6 relative z-10">
@@ -326,7 +352,7 @@ export function FloatingNavbar() {
                                                 <Link
                                                     href={prod.href}
                                                     onClick={() => setActiveDropdown(null)}
-                                                    className="group flex flex-col p-2 rounded-xl hover:bg-[#10A882]/10 hover:border hover:border-[#10A882]/30 border border-transparent transition-all duration-200"
+                                                    className="group flex flex-col p-2 rounded-xl hover:bg-[#10A882]/10 hover:border hover:border-[#10A882]/30 border border-transparent transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10A882]"
                                                 >
                                                     <div className="flex items-center justify-between mb-0.5">
                                                         <span className="text-xs font-medium text-white group-hover:text-[#10A882] transition-colors">

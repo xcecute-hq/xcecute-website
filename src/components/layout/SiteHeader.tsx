@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
@@ -56,7 +57,7 @@ export function SiteHeader() {
                     href="/"
                     className="flex items-center gap-2 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary rounded-md"
                 >
-                    <img src="/Logo%20without%20name.svg" alt="XCECUTE Logo" className="h-7 sm:h-9 w-auto object-contain transform transition-transform group-hover:scale-105" />
+                    <Image src="/Logo%20without%20name.svg" alt="XCECUTE Logo" width={100} height={36} className="h-7 sm:h-9 w-auto object-contain transform transition-transform group-hover:scale-105" />
                     <span className="font-sans font-semibold tracking-widest text-lg hidden sm:block transition-colors group-hover:text-cream">
                         XCECUTE
                     </span>

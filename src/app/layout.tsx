@@ -21,8 +21,33 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Xcecute | AI & Software",
-  description: "Build smarter. Move further.",
+  metadataBase: new URL("https://xcecute.com"),
+  title: "Xcecute | AI, Data & Software Engineering",
+  description: "Xcecute is a technology and product-building initiative operated by its founders. We build practical solutions across AI, software, and data.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Xcecute | AI, Data & Software Engineering",
+    description: "Xcecute is a technology and product-building initiative operated by its founders. We build practical solutions across AI, software, and data.",
+    url: "https://xcecute.com",
+    siteName: "Xcecute",
+    images: [
+      {
+        url: "/Logo_with_name-removebg-preview.svg",
+        width: 1200,
+        height: 630,
+        alt: "Xcecute Technology",
+      },
+    ],
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Xcecute | AI, Data & Software Engineering",
+    description: "Xcecute is a technology and product-building initiative operated by its founders. We build practical solutions across AI, software, and data.",
+  },
 };
 
 export default function RootLayout({

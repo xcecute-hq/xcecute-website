@@ -4,110 +4,115 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-    title: "About | Xcecute",
-    description: "We're building something of our own.",
+    title: "Our Team | Xcecute",
+    description: "The people behind Xcecute.",
 };
 
-const values = [
-    { num: "01", title: "Curiosity", description: "We ask questions before jumping to solutions." },
-    { num: "02", title: "Ownership", description: "If we're building it, we care about what happens to it." },
-    { num: "03", title: "Honesty", description: "If something doesn't make sense, we'll tell you." },
-    { num: "04", title: "Craft", description: "We care about writing good software and creating good experiences." },
-    { num: "05", title: "Simplicity", description: "We look for the simplest solution that genuinely solves the problem." },
-    { num: "06", title: "Growth", description: "Every project should leave us better than when we started." }
-];
-
-export default function AboutPage() {
+export default function TeamPage() {
     return (
-        <div className="flex flex-col w-full min-h-screen pt-32 relative z-10 overflow-hidden">
+        <div className="flex flex-col w-full min-h-screen pt-32 relative z-10 overflow-hidden bg-black">
 
-            {/* THE AGENCY */}
-            <section className="pb-32 px-4 sm:px-6 lg:px-8">
+            {/* Atmospheric Backgrounds */}
+            <div className="absolute inset-0 pointer-events-none opacity-10 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+
+            {/* PAGE HERO */}
+            <section className="pb-32 px-4 sm:px-6 lg:px-8 relative z-10">
                 <div className="max-w-5xl mx-auto">
                     <ScrollReveal>
-                        <span className="font-sans text-[11px] font-medium uppercase tracking-[0.2em] text-[#707A75] mb-8 block">Xcecute</span>
-                        <h1 className="font-sans font-medium text-5xl sm:text-7xl lg:text-[90px] leading-[1.05] tracking-tight text-[#F1F4F2] mb-16">
-                            We're building<br />something of our own.
+                        <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-[#10A882] mb-6 block">Our Team</span>
+                        <h1 className="font-sans font-medium text-5xl sm:text-7xl lg:text-[90px] leading-[1.05] tracking-tight text-white mb-12">
+                            The people behind XCECUTE.
                         </h1>
                     </ScrollReveal>
 
                     <ScrollReveal delay={0.2}>
-                        <div className="max-w-2xl font-sans text-xl sm:text-2xl text-[#A7B0AB] leading-relaxed space-y-8">
+                        <div className="max-w-3xl font-sans text-xl sm:text-2xl text-white leading-relaxed">
                             <p>
-                                We're engineers, designers, and builders who decided to stop waiting for the perfect idea and start building. We started this company because we enjoy solving difficult problems. Not just writing code, but understanding <span className="text-[#F1F4F2]">why something needs to exist, who it is for, and how it can actually make a difference.</span>
-                            </p>
-                            <p>
-                                We know what it feels like to start with an idea and not have everything figured out yet. That's why we don't believe in making things unnecessarily complicated. You bring us the problem, the idea, or even just a rough direction. <span className="text-[#10A882]">We figure it out for you.</span>
-                            </p>
-                            <p>
-                                Sometimes that means building a product from scratch. Sometimes it's automating a process your team is tired of doing manually. Sometimes it's fixing something that has grown messy over time. Whatever the problem is, we want to understand it before we start building.
+                                We bring together engineering, software, AI services, and data to turn complex ideas into products and solutions that work in the real world.
                             </p>
                         </div>
                     </ScrollReveal>
                 </div>
             </section>
 
-            {/* WE'RE LEARNING TOO */}
-            <section className="py-32 px-4 sm:px-6 lg:px-8 border-t border-[#B4FFD7]/10 bg-[#0D1210]">
-                <div className="max-w-5xl mx-auto flex flex-col lg:flex-row gap-16 lg:gap-24">
-                    <div className="lg:w-1/2">
-                        <ScrollReveal>
-                            <h2 className="font-sans font-medium text-5xl sm:text-7xl leading-[1.1] tracking-tight text-[#F1F4F2] mb-8">
-                                We're learning too.
-                            </h2>
-                        </ScrollReveal>
-                    </div>
-                    <div className="lg:w-1/2">
-                        <ScrollReveal delay={0.2} className="font-sans text-xl text-[#A7B0AB] leading-relaxed space-y-6 lg:mt-4">
-                            <p>We're not going to pretend we've built everything or know everything.</p>
-                            <p>We're growing, experimenting, and improving with every project.</p>
-                            <p>And we think there's something valuable about working with people who are <span className="text-[#F1F4F2]">still hungry to prove themselves.</span></p>
-                        </ScrollReveal>
-                    </div>
-                </div>
-            </section>
+            {/* FOUNDERS AS LEADERSHIP */}
+            <section className="py-32 px-4 sm:px-6 lg:px-8 border-t border-white/5 bg-black relative">
+                {/* Subtle Ambient Glow */}
+                <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#10A882]/5 blur-[120px] rounded-full pointer-events-none" />
 
-            {/* WHY WORK WITH US */}
-            <section className="py-32 px-4 sm:px-6 lg:px-8 border-t border-[#B4FFD7]/10 bg-[#0A0F0D]">
-                <div className="max-w-5xl mx-auto flex flex-col items-center text-center">
-                    <ScrollReveal>
-                        <h2 className="font-sans text-[#707A75] text-2xl sm:text-3xl font-medium tracking-tight mb-12">
-                            Why work with us?
-                        </h2>
+                <div className="max-w-6xl mx-auto relative z-10">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
 
-                        <div className="font-sans text-xl sm:text-2xl text-[#A7B0AB] leading-relaxed max-w-2xl mx-auto mb-16 space-y-4">
-                            <p>Not because we're the biggest. We're not.</p>
-                            <p>Not because we've been around for decades. We haven't.</p>
-                            <p>And we're not going to make promises just to win a project.</p>
-                        </div>
+                        {/* FOUNDER 1: HARISH */}
+                        <ScrollReveal delay={0.1}>
+                            <div className="group relative p-8 rounded-3xl bg-[#080B0A] border border-white/5 hover:border-[#10A882]/30 transition-all duration-500 overflow-hidden h-full flex flex-col justify-between">
+                                <div className="absolute inset-0 bg-gradient-to-br from-[#10A882]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
 
-                        <h3 className="font-sans font-medium text-4xl sm:text-5xl lg:text-6xl leading-[1.1] tracking-tight text-[#F1F4F2] mb-12 max-w-4xl mx-auto">
-                            We'd rather earn your trust through the work.
-                        </h3>
-
-                        <p className="font-sans text-lg sm:text-xl text-[#A7B0AB] leading-relaxed max-w-2xl mx-auto">
-                            You'll get people who care about the problem, communicate openly, learn quickly, and take ownership of what they're building. We're building this company the same way we'd build a product: <span className="text-[#F1F4F2]">start small, listen carefully, improve constantly, and make something worth keeping.</span>
-                        </p>
-                    </ScrollReveal>
-                </div>
-            </section>
-
-            {/* VALUES */}
-            <section className="py-32 px-4 sm:px-6 lg:px-8 border-t border-[#B4FFD7]/10 bg-[#080B0A]">
-                <div className="max-w-5xl mx-auto">
-                    <ScrollReveal>
-                        <h2 className="font-sans font-medium text-4xl sm:text-5xl tracking-tight text-[#F1F4F2] mb-16">
-                            Our Values
-                        </h2>
-                    </ScrollReveal>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
-                        {values.map((v, i) => (
-                            <ScrollReveal key={v.num} delay={i * 0.05} className="group flex items-start gap-8">
-                                <span className="font-sans text-sm text-[#10A882]/40 font-medium pt-1 shrink-0 group-hover:text-[#10A882] transition-colors">{v.num}</span>
                                 <div>
-                                    <h4 className="font-sans font-medium text-2xl text-[#F1F4F2] mb-3 group-hover:drop-shadow-[0_0_8px_rgba(53,208,127,0.3)] transition-all">{v.title}</h4>
-                                    <p className="font-sans text-[#A7B0AB] text-[15px] leading-relaxed">{v.description}</p>
+                                    <h3 className="font-sans text-2xl font-medium text-white mb-2 pt-2">HARISH M P</h3>
+                                    <span className="font-mono text-[10px] uppercase tracking-widest text-[#10A882] mb-8 block font-semibold">Co-Founder · AI Services Team Lead</span>
+                                    <p className="font-sans text-white leading-relaxed text-[15px]">
+                                        Leads the AI services team, working on intelligent systems and the engineering behind them. Focuses on turning ideas into practical solutions and moving projects from concept to execution.
+                                    </p>
+                                </div>
+                            </div>
+                        </ScrollReveal>
+
+                        {/* FOUNDER 2: VINDKASH */}
+                        <ScrollReveal delay={0.2}>
+                            <div className="group relative p-8 rounded-3xl bg-[#080B0A] border border-white/5 hover:border-[#10A882]/30 transition-all duration-500 overflow-hidden h-full flex flex-col justify-between">
+                                <div className="absolute inset-0 bg-gradient-to-br from-[#10A882]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+
+                                <div>
+                                    <h3 className="font-sans text-2xl font-medium text-white mb-2 pt-2">VINDKASH C M REDDY</h3>
+                                    <span className="font-mono text-[10px] uppercase tracking-widest text-[#10A882] mb-8 block font-semibold">Co-Founder · Software Development Team Lead</span>
+                                    <p className="font-sans text-white leading-relaxed text-[15px]">
+                                        Leads software development, building the systems and applications that turn ideas into reliable products. Focuses on thoughtful engineering and solving practical problems through software.
+                                    </p>
+                                </div>
+                            </div>
+                        </ScrollReveal>
+
+                        {/* FOUNDER 3: VIKASHH */}
+                        <ScrollReveal delay={0.3}>
+                            <div className="group relative p-8 rounded-3xl bg-[#080B0A] border border-white/5 hover:border-[#10A882]/30 transition-all duration-500 overflow-hidden h-full flex flex-col justify-between">
+                                <div className="absolute inset-0 bg-gradient-to-br from-[#10A882]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+
+                                <div>
+                                    <h3 className="font-sans text-2xl font-medium text-white mb-2 pt-2">VIKASHH K ADAIKALAVAN</h3>
+                                    <span className="font-mono text-[10px] uppercase tracking-widest text-[#10A882] mb-8 block font-semibold">Co-Founder · Data Analytics Team Lead</span>
+                                    <p className="font-sans text-white leading-relaxed text-[15px]">
+                                        Leads data analytics, working with data to uncover useful patterns and support better decisions. Focuses on making complex information clear, practical, and useful.
+                                    </p>
+                                </div>
+                            </div>
+                        </ScrollReveal>
+
+                    </div>
+                </div>
+            </section>
+
+            {/* TEAM STRUCTURE */}
+            <section className="py-24 px-4 sm:px-6 lg:px-8 border-t border-white/5 bg-[#030504]">
+                <div className="max-w-4xl mx-auto">
+                    <ScrollReveal>
+                        <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-[#10A882] mb-6 block md:text-left text-center">Disciplines</span>
+                        <h2 className="font-sans font-medium text-3xl sm:text-4xl tracking-tight text-white mb-16 md:text-left text-center">
+                            BUILT ACROSS DISCIPLINES
+                        </h2>
+                    </ScrollReveal>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12">
+                        {[
+                            { title: "Engineering" },
+                            { title: "AI Services" },
+                            { title: "Software Development" },
+                            { title: "Data Analytics" }
+                        ].map((v, i) => (
+                            <ScrollReveal key={v.title} delay={i * 0.1}>
+                                <div className="group flex items-center justify-between border-b border-white/10 pb-6 hover:border-[#10A882]/40 transition-colors">
+                                    <h4 className="font-sans font-medium text-xl text-white">{v.title}</h4>
+                                    <div className="h-1.5 w-1.5 rounded-full bg-white/20 group-hover:bg-[#10A882] transition-colors" />
                                 </div>
                             </ScrollReveal>
                         ))}
@@ -115,27 +120,49 @@ export default function AboutPage() {
                 </div>
             </section>
 
-            {/* CTA */}
-            <section className="py-32 px-4 sm:px-6 lg:px-8 border-t border-[#B4FFD7]/10 bg-[#0D1210] relative overflow-hidden">
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#10A882]/5 rounded-full blur-[150px] pointer-events-none" />
-                <div className="max-w-3xl mx-auto text-center relative z-10">
+            {/* TEAM APPROACH */}
+            <section className="py-24 px-4 sm:px-6 lg:px-8 border-t border-white/5 bg-black">
+                <div className="max-w-4xl mx-auto text-center md:text-left">
                     <ScrollReveal>
-                        <h2 className="font-sans font-medium text-3xl sm:text-5xl text-[#F1F4F2] tracking-tight mb-8">
-                            One Last Thing.
+                        <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-[#10A882] mb-6 block">Our Approach</span>
+                        <h2 className="font-sans font-medium text-2xl sm:text-3xl tracking-tight text-white mb-6">
+                            ONE STANDARD. BUILD IT WELL.
                         </h2>
-                        <p className="font-sans text-xl text-[#A7B0AB] leading-relaxed mb-12">
-                            We're not interested in being just another company you send a brief to. We'd rather understand what you're trying to do, figure things out together, and build something we're both proud to put our names behind.
-                            <br /><br />
-                            <span className="text-[#F1F4F2]">If you have an idea, a problem, or something you've been putting off fixing – tell us about it.</span>
+                    </ScrollReveal>
+
+                    <ScrollReveal delay={0.2}>
+                        <div className="font-sans text-lg text-white leading-relaxed">
+                            <p>
+                                Different disciplines approach problems from different angles, but the goal remains the same: understand the problem, build thoughtfully, and create something that delivers real value.
+                            </p>
+                        </div>
+                    </ScrollReveal>
+                </div>
+            </section>
+
+            {/* CLOSING / CTA */}
+            <section className="py-32 px-4 sm:px-6 lg:px-8 border-t border-[#10A882]/10 bg-black relative overflow-hidden">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#10A882]/5 rounded-full blur-[150px] pointer-events-none" />
+                <div className="absolute right-[-10%] bottom-[10%] w-[40%] h-[80%] border-r-[1px] border-[#10A882]/10 rounded-[100%] pointer-events-none blur-[1px]" />
+
+                <div className="max-w-4xl mx-auto text-center relative z-10">
+                    <ScrollReveal>
+                        <h2 className="font-sans font-medium text-4xl sm:text-6xl text-white tracking-tight mb-8">
+                            BUILD WITH US.
+                        </h2>
+
+                        <p className="font-sans text-lg text-white leading-relaxed mb-12">
+                            Have an idea, a problem, or something worth building?<br />Let's talk.
                         </p>
 
-                        <Link href="/contact" className="inline-flex items-center text-[15px] tracking-wide font-semibold text-black bg-white border-2 border-[#10A882] hover:bg-[#F1F4F2] px-8 py-4 rounded-full shadow-[0_0_30px_rgba(16,168,130,0.25)] hover:shadow-[0_0_35px_rgba(16,168,130,0.4)] transition-all duration-300 group">
+                        <Link href="/contact" className="inline-flex items-center text-[13px] tracking-wide font-semibold text-white bg-black/50 border border-[#10A882]/40 hover:bg-[#10A882]/10 hover:border-[#10A882]/70 px-8 py-4 rounded-full shadow-[0_0_20px_rgba(16,168,130,0.15)] transition-all duration-300 group">
                             Contact Us
-                            <ArrowRight className="w-4 h-4 ml-3 text-black group-hover:translate-x-1 transition-transform" />
+                            <ArrowRight className="w-4 h-4 ml-3 text-white group-hover:translate-x-1 transition-transform" />
                         </Link>
                     </ScrollReveal>
                 </div>
             </section>
+
         </div>
     );
 }

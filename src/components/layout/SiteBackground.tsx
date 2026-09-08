@@ -7,7 +7,7 @@ export function SiteBackground({ children }: { children: ReactNode }) {
             <div
                 className="fixed inset-0 pointer-events-none z-0"
                 style={{
-                    background: 'radial-gradient(ellipse 1000px 800px at 100% 0%, rgba(16, 168, 130, 0.35) 0%, rgba(16, 168, 130, 0.18) 30%, rgba(16, 168, 130, 0.05) 60%, transparent 80%)'
+                    background: 'radial-gradient(ellipse 1000px 800px at 100% 0%, rgba(16, 168, 130, 0.15) 0%, rgba(16, 168, 130, 0.08) 30%, rgba(16, 168, 130, 0.02) 60%, transparent 80%)'
                 }}
             />
 
@@ -30,11 +30,11 @@ export function SiteBackground({ children }: { children: ReactNode }) {
             <div
                 className="fixed top-0 right-0 w-[600px] sm:w-[850px] lg:w-[1100px] h-[600px] sm:h-[850px] lg:h-[950px] pointer-events-none z-20 overflow-hidden"
                 style={{
-                    background: 'radial-gradient(circle at 100% 0%, rgba(16, 168, 130, 0.32) 0%, rgba(16, 168, 130, 0.16) 30%, rgba(16, 168, 130, 0.04) 60%, transparent 80%)',
+                    background: 'radial-gradient(circle at 100% 0%, rgba(16, 168, 130, 0.15) 0%, rgba(16, 168, 130, 0.08) 30%, rgba(16, 168, 130, 0.02) 60%, transparent 80%)',
                 }}
             />
             <div
-                className="fixed -top-24 -right-24 w-[500px] sm:w-[650px] h-[500px] sm:h-[650px] pointer-events-none z-20 rounded-full blur-[140px] bg-[#10A882]/25"
+                className="fixed -top-24 -right-24 w-[500px] sm:w-[650px] h-[500px] sm:h-[650px] pointer-events-none z-20 rounded-full blur-[140px] bg-[#10A882]/10"
             />
         </div>
     );

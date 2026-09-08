@@ -15,7 +15,7 @@ const caseStudies = [
         problem: "Existing analytics infrastructure could not scale to process increasing volumes of transaction data in real time.",
         approach: "Re-architected the data fetching pipeline to utilize server-side aggregation and optimized caching layers.",
         build: "A custom UI frontend integrated with a high-performance backend, designed specifically for rapid data visualization.",
-        outcome: "300% increase in load speed for large datasets."
+        outcome: "Significantly reduced latency for complex global data aggregation."
     },
     {
         slug: "ai-workflow",
@@ -24,7 +24,7 @@ const caseStudies = [
         problem: "Manual supply chain data entry was bottlenecking operations and causing compliance delays.",
         approach: "Integrated an AI-driven extraction layer to identify and structure data from invoices and shipping manifests automatically.",
         build: "A custom internal tool featuring automated document ingestion, AI-based OCR, and a human-in-the-loop review interface.",
-        outcome: "Saved 40hrs/week in manual data entry."
+        outcome: "Eliminated critical operational bottlenecks via automated ingestion."
     },
     {
         slug: "ecommerce-scale",
@@ -33,7 +33,7 @@ const caseStudies = [
         problem: "Legacy architecture was failing under extreme traffic spikes during seasonal sales events.",
         approach: "Migrated to a headless architecture with edge caching to decouple the frontend experience from backend processing.",
         build: "A custom storefront utilizing modern headless commerce frameworks, focused on reliability and edge-network performance.",
-        outcome: "$10M+ Black Friday seamlessly handled."
+        outcome: "Maintained peak performance during critical high-traffic storefront rollouts."
     },
     {
         slug: "health-app",
@@ -42,7 +42,7 @@ const caseStudies = [
         problem: "Clinicians needed mobile access to critical patient updates without navigating complex, legacy desktop portals.",
         approach: "Focused on creating an extremely fast, simplified interface targeting only the highest-frequency clinician workflows.",
         build: "A secure, HIPAA-compliant mobile companion application connected directly to existing hospital infrastructure.",
-        outcome: "Deployed to 5,000+ hospital workers."
+        outcome: "Adopted effectively by large-scale enterprise personnel."
     },
     {
         slug: "medtech-portal",
@@ -51,7 +51,7 @@ const caseStudies = [
         problem: "The existing patient data architecture was difficult to maintain and struggling with shifting compliance requirements.",
         approach: "Standardized the data models and implemented strict role-based access control across the entire ecosystem.",
         build: "A robust web application for patient management, featuring deep audit logging and secure data visualization.",
-        outcome: "HIPAA Compliant architectural overhaul."
+        outcome: "Architectural overhaul designed around stringent data privacy controls."
     },
     {
         slug: "proptech-platform",
@@ -60,7 +60,7 @@ const caseStudies = [
         problem: "Property managers were managing multiple disparate systems for billing, maintenance, and tenant communication.",
         approach: "Consolidated core operations into a unified platform focused on multi-tenant architecture and rapid onboarding.",
         build: "A comprehensive SaaS platform engineered for scalability, featuring custom billing integrations and communication workflows.",
-        outcome: "Scaled to 10k+ active property groups."
+        outcome: "Built to scale dynamically across multiple managed properties."
     }
 ];
 
